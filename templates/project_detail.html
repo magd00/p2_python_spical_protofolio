@@ -172,7 +172,7 @@
 
           {% if project.demo_note %}
           <div class="how-to-box">
-            <strong>How this demo works:</strong> {{ project.demo_note }}
+            <strong>⚠ This is a simplified demo:</strong> {{ project.demo_note }}
           </div>
           {% endif %}
 
@@ -208,6 +208,22 @@
               </div>
             </div>
           </div>
+        </div>
+        {% endif %}
+
+        {% if project.github_link %}
+        <div class="info-card">
+          <h3><i class="bi bi-github"></i> Run the full project yourself</h3>
+          <p>This page runs a simplified, self-contained demo of the core logic. To run the real, complete project — including any UI, file access, or packages that can't run in a browser demo — grab it from GitHub:</p>
+          {% set repo_name = project.github_link.rstrip('/').split('/')[-1] %}
+          <pre class="code-editor" style="margin-top: 10px;">git clone {{ project.github_link }}.git
+cd {{ repo_name }}
+pip install -r requirements.txt
+python main.py</pre>
+          <p class="mb-0" style="font-size: .85rem; color: #8a91a3;">
+            (If the repo doesn't have a <code>requirements.txt</code>, or the entry file isn't <code>main.py</code>,
+            check the repo's README for exact setup steps.)
+          </p>
         </div>
         {% endif %}
 
