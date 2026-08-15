@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Add New Project{% endblock %}
+
+{% block content %}
+<section class="add-project section">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Add New Project</h2>
+      <p>Share your Python project with the world</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <form method="POST" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label class="form-label">Project Title</label>
+            <input type="text" name="title" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Short Description</label>
+            <textarea name="description" class="form-control" rows="2" required></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Full Description</label>
+            <textarea name="full_description" class="form-control" rows="4"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Category</label>
+            <select name="category" class="form-control" required>
+              <option value="web">Web Development</option>
+              <option value="data">Data Analysis</option>
+              <option value="automation">Automation</option>
+              <option value="api">API Development</option>
+              <option value="game">Game</option>
+              <option value="desktop">Desktop App</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Technologies (comma-separated)</label>
+            <input type="text" name="technologies" class="form-control" placeholder="Flask, Pandas, SQLite" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">GitHub Link</label>
+            <input type="url" name="github_link" class="form-control" placeholder="https://github.com/username/repo">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Live Demo Link</label>
+            <input type="url" name="demo_link" class="form-control" placeholder="https://your-project-demo.com">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Project Image</label>
+            <input type="file" name="image" class="form-control" accept="image/*">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Python Code Snippet</label>
+            <textarea name="code_snippet" class="form-control font-monospace" rows="10" placeholder="def hello_world():&#10;    print('Hello, World!')&#10;&#10;hello_world()"></textarea>
+            <small class="text-muted">Paste your Python code here to showcase it</small>
+          </div>
+
+          <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Save Project</button>
+          <a href="{{ url_for('portfolio') }}" class="btn btn-secondary">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

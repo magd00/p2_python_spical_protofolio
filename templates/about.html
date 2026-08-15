@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}About Me - Magd's Portfolio{% endblock %}
+
+{% block content %}
+<!-- About Section -->
+<section id="about" class="about section">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>About Me</h2>
+      <p>Get to know me better</p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <img src="{{ url_for('static', filename='assets/img/profile/profile-square-11.webp') }}" class="img-fluid rounded" alt="Magd">
+      </div>
+      <div class="col-lg-8 pt-4 pt-lg-0 content">
+        <h3>Python Developer & Creative Problem Solver</h3>
+        <p class="fst-italic">
+          I'm passionate about building efficient, scalable solutions with Python.
+        </p>
+        <div class="row">
+          <div class="col-lg-6">
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <strong>Name:</strong> <span>Magd</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>magd096924@gmail.com</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+963 969248413</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>syria</span></li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <strong>Experience:</strong> <span>3+ Years</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
+              <li><i class="bi bi-chevron-right"></i> <strong>GitHub:</strong> <span>github.com/yourusername</span></li>
+            </ul>
+          </div>
+        </div>
+        <p>
+          I specialize in Flask web development, data analysis with Pandas, and creating automation scripts. 
+          I'm also certified in Claude, Claude Code, and the Claude Platform — skills I use to prompt, 
+          debug, and build faster with AI as part of my everyday workflow, including integrating AI 
+          capabilities directly into applications via the Claude API. 
+          I love turning complex problems into simple, elegant solutions. When I'm not coding, I enjoy 
+          contributing to open source projects and learning new technologies.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Portfolio - Magd's Python Projects{% endblock %}
+
+{% block content %}
+<!-- Portfolio Section -->
+<section id="portfolio" class="portfolio section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>My Python Projects</h2>
+    <p>Showcasing my best work in Python development, data analysis, and web applications</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+      <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="200">
+        <li data-filter="*" class="filter-active">All Projects</li>
+        <li data-filter=".filter-web">Web Development</li>
+        <li data-filter=".filter-data">Data Analysis</li>
+        <li data-filter=".filter-automation">Automation</li>
+        <li data-filter=".filter-api">API Development</li>
+        <li data-filter=".filter-game">Games</li>
+        <li data-filter=".filter-desktop">Desktop Apps</li>
+      </ul>
+
+      <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
+        {% for project in projects %}
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ project.category }}">
+          <div class="portfolio-card">
+            <div class="portfolio-img">
+              <img src="{{ url_for('static', filename='assets/img/portfolio/' + project.image) }}" alt="{{ project.title }}" class="img-fluid">
+              <div class="portfolio-overlay">
+                <a href="{{ url_for('static', filename='assets/img/portfolio/' + project.image) }}" class="glightbox portfolio-lightbox"><i class="bi bi-plus"></i></a>
+                <a href="{{ url_for('project_detail', project_id=project.id) }}" class="portfolio-details-link"><i class="bi bi-link"></i></a>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <h4>{{ project.title }}</h4>
+              <p>{{ project.description[:100] }}...</p>
+              <div class="portfolio-tags">
+                <span>{{ project.category|capitalize }}</span>
+                <span>{{ project.technologies }}</span>
+              </div>
+              <div class="mt-2">
+                <a href="{{ project.github_link }}" target="_blank" class="btn btn-sm btn-outline-dark"><i class="bi bi-github"></i> Code</a>
+                <a href="{{ url_for('project_detail', project_id=project.id) }}" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i> Live Demo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+{% endblock %}

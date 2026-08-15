@@ -1,0 +1,32 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#171a21"/>
+      <stop offset="100%" stop-color="#0f1115"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg5)"/>
+  <!-- brick rows -->
+  <g>
+    <g fill="#e74c3c">
+      <rect x="140" y="90" width="55" height="20"/><rect x="200" y="90" width="55" height="20"/>
+      <rect x="260" y="90" width="55" height="20"/><rect x="320" y="90" width="55" height="20"/>
+      <rect x="380" y="90" width="55" height="20"/>
+    </g>
+    <g fill="#f2c94c">
+      <rect x="140" y="115" width="55" height="20"/><rect x="200" y="115" width="55" height="20"/>
+      <rect x="260" y="115" width="55" height="20"/><rect x="320" y="115" width="55" height="20"/>
+      <rect x="380" y="115" width="55" height="20"/>
+    </g>
+    <g fill="#2ecc71">
+      <rect x="140" y="140" width="55" height="20"/><rect x="200" y="140" width="55" height="20"/>
+      <rect x="260" y="140" width="55" height="20"/><rect x="320" y="140" width="55" height="20"/>
+      <rect x="380" y="140" width="55" height="20"/>
+    </g>
+  </g>
+  <!-- ball -->
+  <circle cx="300" cy="230" r="10" fill="#c3c9d4"/>
+  <!-- paddle -->
+  <rect x="260" y="290" width="80" height="14" rx="6" fill="#6c5ce7"/>
+  <text x="300" y="360" text-anchor="middle" fill="#8890a0" font-family="monospace" font-size="16">BREAKOUT GAME</text>
+</svg>

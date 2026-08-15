@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}Services - Magd's Portfolio{% endblock %}
+
+{% block content %}
+<!-- Services Section -->
+<section id="services" class="services section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Services</h2>
+    <p>I offer professional Python development and web solutions tailored to your needs</p>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row justify-content-center g-5">
+
+      <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="bi bi-code-slash"></i>
+          </div>
+          <div class="service-content">
+            <h3>Python Web Development</h3>
+            <p>Custom web applications built with Flask and Django. RESTful APIs, database integration, and full-stack solutions for your business needs.</p>
+            <a href="{{ url_for('contact') }}" class="service-link">
+              <span>Learn More</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div><!-- End Service Item -->
+
+      <div class="col-md-6" data-aos="fade-left" data-aos-delay="100">
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="bi bi-bar-chart-line"></i>
+          </div>
+          <div class="service-content">
+            <h3>Data Analysis & Visualization</h3>
+            <p>Transform your raw data into actionable insights. Using Pandas, NumPy, and Plotly to create interactive dashboards and reports.</p>
+            <a href="{{ url_for('contact') }}" class="service-link">
+              <span>Learn More</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div><!-- End Service Item -->
+
+      <div class="col-md-6" data-aos="fade-right" data-aos-delay="200">
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="bi bi-robot"></i>
+          </div>
+          <div class="service-content">
+            <h3>Automation Scripts</h3>
+            <p>Save time and reduce errors with custom Python automation. Web scraping, file processing, email automation, and workflow optimization.</p>
+            <a href="{{ url_for('contact') }}" class="service-link">
+              <span>Learn More</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div><!-- End Service Item -->
+
+      <div class="col-md-6" data-aos="fade-left" data-aos-delay="200">
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="bi bi-database"></i>
+          </div>
+          <div class="service-content">
+            <h3>Database Design & Management</h3>
+            <p>Efficient database design for your applications. SQL (PostgreSQL, MySQL) and NoSQL (MongoDB) solutions with optimization best practices.</p>
+            <a href="{{ url_for('contact') }}" class="service-link">
+              <span>Learn More</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div><!-- End Service Item -->
+
+      <div class="col-md-6" data-aos="fade-right" data-aos-delay="300">
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="bi bi-cloud-check"></i>
+          </div>
+          <div class="service-content">
+            <h3>API Development & Integration</h3>
+            <p>Create robust RESTful APIs with FastAPI or Flask. Integrate third-party services like payment gateways, social media, and cloud platforms.</p>
+            <a href="{{ url_for('contact') }}" class="service-link">
+              <span>Learn More</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div><!-- End Service Item -->
+
+      <div class="col-md-6" data-aos="fade-left" data-aos-delay="300">
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="bi bi-shield-lock"></i>
+          </div>
+          <div class="service-content">
+            <h3>Code Review & Optimization</h3>
+            <p>Improve your existing Python code quality. Performance optimization, security best practices, and mentoring for development teams.</p>
+            <a href="{{ url_for('contact') }}" class="service-link">
+              <span>Learn More</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div><!-- End Service Item -->
+
+      <div class="col-md-6" data-aos="fade-right" data-aos-delay="400">
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="bi bi-stars"></i>
+          </div>
+          <div class="service-content">
+            <h3>AI-Assisted Development</h3>
+            <p>Faster, more reliable delivery using Claude and Claude Code as part of my workflow — prompt-driven development, AI-assisted debugging and refactoring, and integrating the Claude API into applications for smart automation and features.</p>
+            <a href="{{ url_for('contact') }}" class="service-link">
+              <span>Learn More</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div><!-- End Service Item -->
+
+    </div>
+
+  </div>
+
+</section><!-- /Services Section -->
+{% endblock %}

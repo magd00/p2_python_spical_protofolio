@@ -1,0 +1,28 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg10" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#171a21"/>
+      <stop offset="100%" stop-color="#0f1115"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg10)"/>
+  <!-- photo frame -->
+  <rect x="140" y="80" width="220" height="180" rx="8" fill="#20242e" stroke="#2a2f3a" stroke-width="3"/>
+  <circle cx="200" cy="140" r="18" fill="#f2c94c"/>
+  <path d="M150 240 L220 180 L260 210 L300 160 L350 240 Z" fill="#6c5ce7" opacity="0.7"/>
+  <path d="M150 240 L210 200 L250 230 L290 190 L350 240 Z" fill="#4834d4" opacity="0.7"/>
+  <!-- extracted swatches -->
+  <g>
+    <rect x="400" y="90" width="60" height="60" rx="6" fill="#e74c3c"/>
+    <rect x="400" y="160" width="60" height="60" rx="6" fill="#f2c94c"/>
+    <rect x="400" y="230" width="60" height="60" rx="6" fill="#2ecc71"/>
+    <rect x="475" y="90" width="35" height="200" rx="6" fill="#6c5ce7" opacity="0.85"/>
+  </g>
+  <path d="M360 170 L395 170" stroke="#8890a0" stroke-width="3" marker-end="url(#arrow10)"/>
+  <defs>
+    <marker id="arrow10" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#8890a0"/>
+    </marker>
+  </defs>
+  <text x="300" y="350" text-anchor="middle" fill="#8890a0" font-family="monospace" font-size="16">BEAUTY COLOR EXTRACTOR</text>
+</svg>

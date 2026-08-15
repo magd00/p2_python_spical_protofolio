@@ -1,0 +1,24 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg6" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#171a21"/>
+      <stop offset="100%" stop-color="#0f1115"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg6)"/>
+  <!-- coffee cup -->
+  <g transform="translate(150,120)">
+    <path d="M0 0 L100 0 L92 90 Q50 105 8 90 Z" fill="#20242e" stroke="#6c5ce7" stroke-width="3"/>
+    <path d="M100 15 Q135 15 135 45 Q135 75 100 70" fill="none" stroke="#6c5ce7" stroke-width="6"/>
+    <path d="M15 -10 Q25 -25 15 -40" stroke="#8890a0" stroke-width="3" fill="none" opacity="0.6"/>
+    <path d="M45 -10 Q55 -25 45 -40" stroke="#8890a0" stroke-width="3" fill="none" opacity="0.6"/>
+    <path d="M75 -10 Q85 -25 75 -40" stroke="#8890a0" stroke-width="3" fill="none" opacity="0.6"/>
+  </g>
+  <!-- stats bars -->
+  <g fill="#6c5ce7">
+    <rect x="360" y="220" width="30" height="60"/>
+    <rect x="400" y="180" width="30" height="100"/>
+    <rect x="440" y="150" width="30" height="130"/>
+  </g>
+  <text x="300" y="340" text-anchor="middle" fill="#8890a0" font-family="monospace" font-size="16">CAFE MANAGEMENT SYSTEM</text>
+</svg>

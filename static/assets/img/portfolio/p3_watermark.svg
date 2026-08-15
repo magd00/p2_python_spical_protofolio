@@ -1,0 +1,22 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#171a21"/>
+      <stop offset="100%" stop-color="#0f1115"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg3)"/>
+  <!-- photo -->
+  <rect x="160" y="90" width="280" height="190" rx="8" fill="#20242e" stroke="#2a2f3a" stroke-width="2"/>
+  <circle cx="210" cy="140" r="16" fill="#f2c94c"/>
+  <path d="M170 260 L250 190 L300 230 L360 170 L430 260 Z" fill="#6c5ce7" opacity="0.6"/>
+  <!-- watermark text -->
+  <text x="400" y="255" text-anchor="end" fill="#ffffff" opacity="0.75" font-family="monospace" font-size="18" font-weight="bold">© SAMPLE</text>
+  <!-- opacity slider icon -->
+  <g transform="translate(230,300)">
+    <line x1="0" y1="0" x2="140" y2="0" stroke="#2a2f3a" stroke-width="6" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="90" y2="0" stroke="#6c5ce7" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="90" cy="0" r="10" fill="#c3c9d4"/>
+  </g>
+  <text x="300" y="350" text-anchor="middle" fill="#8890a0" font-family="monospace" font-size="16">IMAGE WATERMARKING APP</text>
+</svg>

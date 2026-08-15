@@ -1,0 +1,27 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg14" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#171a21"/>
+      <stop offset="100%" stop-color="#0f1115"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg14)"/>
+  <!-- museum columns -->
+  <g fill="#20242e" stroke="#2a2f3a" stroke-width="2">
+    <rect x="150" y="120" width="300" height="150"/>
+    <rect x="160" y="100" width="20" height="180"/>
+    <rect x="210" y="100" width="20" height="180"/>
+    <rect x="260" y="100" width="20" height="180"/>
+    <rect x="320" y="100" width="20" height="180"/>
+    <rect x="370" y="100" width="20" height="180"/>
+    <rect x="420" y="100" width="20" height="180"/>
+  </g>
+  <polygon points="150,100 450,100 300,60" fill="#6c5ce7"/>
+  <!-- framed painting -->
+  <rect x="255" y="150" width="90" height="70" fill="#0f1115" stroke="#f2c94c" stroke-width="4"/>
+  <path d="M260 210 L290 175 L310 195 L340 160" fill="none" stroke="#6c5ce7" stroke-width="3"/>
+  <!-- magnifying glass -->
+  <circle cx="440" cy="270" r="34" fill="none" stroke="#c3c9d4" stroke-width="8"/>
+  <line x1="465" y1="295" x2="500" y2="330" stroke="#c3c9d4" stroke-width="10" stroke-linecap="round"/>
+  <text x="300" y="360" text-anchor="middle" fill="#8890a0" font-family="monospace" font-size="16">OPEN ART MUSEUM EXPLORER</text>
+</svg>

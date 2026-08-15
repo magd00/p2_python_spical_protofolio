@@ -1,0 +1,28 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#171a21"/>
+      <stop offset="100%" stop-color="#0f1115"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg4)"/>
+  <!-- keyboard -->
+  <rect x="140" y="180" width="320" height="110" rx="10" fill="#20242e" stroke="#2a2f3a" stroke-width="2"/>
+  <g fill="#2a2f3a">
+    <rect x="155" y="195" width="30" height="24" rx="4"/><rect x="192" y="195" width="30" height="24" rx="4"/>
+    <rect x="229" y="195" width="30" height="24" rx="4"/><rect x="266" y="195" width="30" height="24" rx="4"/>
+    <rect x="303" y="195" width="30" height="24" rx="4"/><rect x="340" y="195" width="30" height="24" rx="4"/>
+    <rect x="377" y="195" width="30" height="24" rx="4"/><rect x="414" y="195" width="30" height="24" rx="4"/>
+    <rect x="155" y="226" width="30" height="24" rx="4"/><rect x="192" y="226" width="30" height="24" rx="4"/>
+    <rect x="229" y="226" width="30" height="24" rx="4"/><rect x="266" y="226" width="30" height="24" rx="4"/>
+    <rect x="303" y="226" width="30" height="24" rx="4"/><rect x="340" y="226" width="30" height="24" rx="4"/>
+    <rect x="377" y="226" width="30" height="24" rx="4"/><rect x="414" y="226" width="30" height="24" rx="4"/>
+    <rect x="185" y="257" width="230" height="20" rx="4"/>
+  </g>
+  <!-- speed lines / stopwatch -->
+  <circle cx="470" cy="130" r="34" fill="none" stroke="#f2c94c" stroke-width="6"/>
+  <line x1="470" y1="130" x2="470" y2="105" stroke="#f2c94c" stroke-width="4" stroke-linecap="round"/>
+  <line x1="470" y1="130" x2="488" y2="130" stroke="#f2c94c" stroke-width="4" stroke-linecap="round"/>
+  <rect x="460" y="88" width="20" height="8" rx="3" fill="#f2c94c"/>
+  <text x="300" y="340" text-anchor="middle" fill="#8890a0" font-family="monospace" font-size="16">TYPING SPEED TEST</text>
+</svg>

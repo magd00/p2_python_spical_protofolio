@@ -1,0 +1,271 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }} - Project Details{% endblock %}
+
+{% block extra_css %}
+<style>
+  .project-hero {
+    position: relative;
+    min-height: 320px;
+    display: flex;
+    align-items: flex-end;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 32px;
+    border: 1px solid var(--border-color);
+  }
+  .project-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15,17,21,0.15) 0%, rgba(15,17,21,0.85) 75%, rgba(15,17,21,0.97) 100%);
+  }
+  .project-hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 30px 35px;
+    width: 100%;
+  }
+  .project-hero-content h1 {
+    color: #fff;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+  }
+  .project-hero-content .badge {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    margin-right: 6px;
+  }
+
+  .info-card {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-bottom: 24px;
+  }
+  .info-card h3 {
+    font-size: 1.15rem;
+    color: var(--heading-color);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .info-card h3 i { color: var(--accent-color); }
+
+  .how-to-box {
+    background: var(--surface-color-2);
+    border-left: 3px solid var(--accent-color-2);
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 0.93rem;
+    color: var(--default-color);
+    margin-bottom: 18px;
+  }
+  .how-to-box strong { color: var(--heading-color); }
+
+  /* Code browser */
+  .code-browser {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #14161c;
+  }
+  .code-browser-tabs {
+    display: flex;
+    background: var(--surface-color-2);
+    border-bottom: 1px solid var(--border-color);
+  }
+  .code-browser-tab {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    color: var(--default-color);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+  }
+  .code-browser-tab.active {
+    color: var(--heading-color);
+    border-bottom-color: var(--accent-color);
+    background: #14161c;
+  }
+  .code-browser-toolbar {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 14px;
+  }
+  .code-browser-body { display: none; }
+  .code-browser-body.active { display: block; }
+
+  .code-editor {
+    background: #14161c;
+    color: #d4d4d4;
+    font-family: 'Courier New', monospace;
+    font-size: 0.87rem;
+    padding: 18px 20px;
+    white-space: pre-wrap;
+    max-height: 420px;
+    overflow-y: auto;
+    margin: 0;
+  }
+  .output-area {
+    background: #14161c;
+    color: #9ef29e;
+    padding: 18px 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.87rem;
+    max-height: 420px;
+    overflow-y: auto;
+    margin: 0;
+  }
+  .output-area .placeholder-text {
+    color: var(--default-color);
+    font-family: var(--font-default);
+    font-style: italic;
+  }
+  .run-btn { margin: 14px 20px 18px; }
+  .copy-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--default-color);
+    border-radius: 5px;
+    font-size: 0.78rem;
+    padding: 3px 10px;
+  }
+  .copy-btn:hover { color: var(--heading-color); border-color: var(--accent-color); }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="project-detail section">
+  <div class="container" data-aos="fade-up">
+    <div class="row">
+      <div class="col-lg-9 mx-auto">
+
+        <!-- Hero with the project's cover image as background -->
+        <div class="project-hero" style="background-image: url('{{ url_for('static', filename='assets/img/portfolio/' + project.image) }}');">
+          <div class="project-hero-content">
+            <h1>{{ project.title }}</h1>
+            <span class="badge bg-primary">{{ project.category|capitalize }}</span>
+            <span class="badge bg-secondary">{{ project.technologies }}</span>
+          </div>
+        </div>
+
+        <!-- What is this project -->
+        <div class="info-card">
+          <h3><i class="bi bi-info-circle"></i> What is this project?</h3>
+          <p class="mb-0">{{ project.full_description or project.description }}</p>
+        </div>
+
+        {% if project.code_snippet %}
+        <!-- Interactive code browser -->
+        <div class="info-card">
+          <h3><i class="bi bi-terminal"></i> Try it yourself</h3>
+
+          {% if project.demo_note %}
+          <div class="how-to-box">
+            <strong>How this demo works:</strong> {{ project.demo_note }}
+          </div>
+          {% endif %}
+
+          <div class="how-to-box" style="border-left-color: var(--accent-color);">
+            <strong>How to use it:</strong> Click the <strong>"Code"</strong> tab to read the Python source,
+            then hit <strong>"▶ Run Code"</strong> to actually execute it on the server and watch the
+            <strong>"Output"</strong> tab fill in with the real result — no installation needed.
+          </div>
+
+          <div class="code-browser">
+            <div class="code-browser-tabs">
+              <div class="code-browser-tab active" id="tab-code" onclick="showTab('code')">
+                <i class="bi bi-code-slash"></i> Code
+              </div>
+              <div class="code-browser-tab" id="tab-output" onclick="showTab('output')">
+                <i class="bi bi-terminal"></i> Output
+              </div>
+              <div class="code-browser-toolbar">
+                <button class="copy-btn" onclick="copyCode()"><i class="bi bi-clipboard"></i> Copy</button>
+              </div>
+            </div>
+
+            <div class="code-browser-body active" id="body-code">
+              <pre class="code-editor" id="code-snippet">{{ project.code_snippet }}</pre>
+              <button onclick="runCode()" class="btn btn-success run-btn"><i class="bi bi-play-fill"></i> Run Code</button>
+            </div>
+
+            <div class="code-browser-body" id="body-output">
+              <div id="output" class="output-area">
+                {% if project.code_output %}<pre style="margin:0;">{{ project.code_output }}</pre>
+                {% else %}<p class="placeholder-text">Click "Run Code" on the Code tab to see real output here.</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="mt-4 mb-5">
+          {% if project.github_link %}
+          <a href="{{ project.github_link }}" target="_blank" class="btn btn-dark"><i class="bi bi-github"></i> View Full Source on GitHub</a>
+          {% endif %}
+          {% if project.demo_link %}
+          <a href="{{ project.demo_link }}" target="_blank" class="btn btn-primary"><i class="bi bi-box-arrow-up-right"></i> Live Demo</a>
+          {% endif %}
+          <a href="{{ url_for('portfolio') }}" class="btn btn-outline-secondary"><i class="bi bi-arrow-left"></i> Back to Portfolio</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function showTab(name) {
+  document.getElementById('tab-code').classList.toggle('active', name === 'code');
+  document.getElementById('tab-output').classList.toggle('active', name === 'output');
+  document.getElementById('body-code').classList.toggle('active', name === 'code');
+  document.getElementById('body-output').classList.toggle('active', name === 'output');
+}
+
+function copyCode() {
+  const code = document.getElementById('code-snippet').innerText;
+  navigator.clipboard.writeText(code);
+  const btn = event.currentTarget;
+  const original = btn.innerHTML;
+  btn.innerHTML = '<i class="bi bi-check2"></i> Copied';
+  setTimeout(() => { btn.innerHTML = original; }, 1500);
+}
+
+function runCode() {
+  const code = document.getElementById('code-snippet').innerText;
+  const outputDiv = document.getElementById('output');
+
+  showTab('output');
+  outputDiv.innerHTML = '<div class="text-center"><div class="spinner-border" role="status"></div><br>Running code...</div>';
+
+  fetch('/run-code', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({code: code})
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.error) {
+      outputDiv.innerHTML = `<pre style="color:#ff6b6b; margin:0;">Error:\n${data.error}</pre>`;
+    } else {
+      outputDiv.innerHTML = `<pre style="margin:0;">${data.output || 'No output produced'}</pre>`;
+    }
+  })
+  .catch(error => {
+    outputDiv.innerHTML = `<pre style="color:#ff6b6b; margin:0;">Error: ${error.message}</pre>`;
+  });
+}
+</script>
+{% endblock %}

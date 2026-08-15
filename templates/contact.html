@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - Magd's Portfolio{% endblock %}
+
+{% block content %}
+<section id="contact" class="contact section">
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>Have a project in mind or just want to say hi? Send me a message.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row g-4 g-lg-5">
+      <div class="col-lg-5">
+        <div class="info-box" data-aos="fade-up" data-aos-delay="200">
+          <h3>Contact Info</h3>
+          <p>Feel free to reach out through any of the channels below, or use the form.</p>
+
+          <div class="info-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon-box"><i class="bi bi-geo-alt"></i></div>
+            <div class="content">
+              <h4>Location</h4>
+              <p>Syria</p>
+            </div>
+          </div>
+
+          <div class="info-item" data-aos="fade-up" data-aos-delay="400">
+            <div class="icon-box"><i class="bi bi-telephone"></i></div>
+            <div class="content">
+              <h4>Phone Number</h4>
+              <p>+963 969248413</p>
+            </div>
+          </div>
+
+          <div class="info-item" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon-box"><i class="bi bi-envelope"></i></div>
+            <div class="content">
+              <h4>Email Address</h4>
+              <p>magd096924@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
+          <h3>Get In Touch</h3>
+          <p>I'll get back to you as soon as possible.</p>
+
+          <form method="POST" action="{{ url_for('contact') }}" class="php-email-form">
+            <div class="row gy-4">
+              <div class="col-md-6">
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6">
+                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+              </div>
+              <div class="col-12">
+                <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+              </div>
+              <div class="col-12">
+                <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+              </div>
+              <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

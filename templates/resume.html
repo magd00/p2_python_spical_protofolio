@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}Resume - Magd's Portfolio{% endblock %}
+
+{% block content %}
+<section id="resume" class="resume section">
+
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Resume</h2>
+    <p>Python Developer specializing in Flask, data analysis, and automation</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row">
+      <div class="col-lg-6">
+
+        <!-- Education -->
+        <div class="resume-item" data-aos="fade-up">
+          <h3 class="resume-title">Education</h3>
+          <div class="resume-content">
+            <article class="education-item">
+              <h4>Your Degree / Program</h4>
+              <h5>Start Year - End Year</h5>
+              <p class="institution"><em>Your School / University</em></p>
+              <p>Add a short description of what you studied and any relevant coursework.</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="resume-item skills-animation" data-aos="fade-up">
+          <h3 class="resume-title">Technical Skills</h3>
+          <div class="resume-content">
+            <div class="skill-item">
+              <h4>Python & Flask</h4>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <h4>Data Analysis (Pandas / NumPy)</h4>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <h4>Automation & Scripting</h4>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <h4>Databases (SQLite / SQLAlchemy)</h4>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <!-- Experience -->
+        <div class="resume-item" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="resume-title">Projects & Experience</h3>
+          <div class="resume-content">
+            <article class="experience-item">
+              <h4>Independent Python Developer</h4>
+              <h5>3+ Years</h5>
+              <p class="company"><em>Freelance / Self-directed projects</em></p>
+              <ul>
+                <li>Built 15+ Python projects spanning web apps, automation scripts, games, and data tools — see the Portfolio page</li>
+                <li>Developed full-stack Flask applications with SQLAlchemy-backed databases</li>
+                <li>Created desktop GUI tools with Tkinter and automation scripts for everyday tasks</li>
+                <li>Comfortable working across the stack: backend logic, database design, and front-end templating</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="resume-item" data-aos="fade-up" data-aos-delay="150">
+          <h3 class="resume-title">Certifications</h3>
+          <div class="resume-content">
+
+            <article class="experience-item">
+              <h4>Claude 101</h4>
+              <p class="company"><em>Anthropic</em></p>
+              <p>
+                Built a foundational understanding of how large language models like Claude work,
+                including their capabilities, limitations, and best practices for prompting —
+                knowledge applied throughout this portfolio's design and content.
+              </p>
+              <a href="{{ url_for('static', filename='assets/certificates/claude_101.pdf') }}" target="_blank" class="btn btn-outline btn-sm">View Certificate</a>
+            </article>
+
+            <article class="experience-item mt-4">
+              <h4>Claude Code 101</h4>
+              <p class="company"><em>Anthropic</em></p>
+              <p>
+                Learned to use Claude Code as an agentic coding assistant — delegating development
+                tasks, iterating with an AI pair programmer, and structuring prompts for reliable
+                code generation and debugging.
+              </p>
+              <a href="{{ url_for('static', filename='assets/certificates/claude_code_101.pdf') }}" target="_blank" class="btn btn-outline btn-sm">View Certificate</a>
+            </article>
+
+            <article class="experience-item mt-4">
+              <h4>Claude Code in Action</h4>
+              <p class="company"><em>Anthropic</em></p>
+              <p>
+                Applied Claude Code to real, hands-on development work — refactoring code, fixing
+                bugs, and shipping features faster by working alongside an AI coding agent, directly
+                shaping the workflow used to build this site.
+              </p>
+              <a href="{{ url_for('static', filename='assets/certificates/claude_code_in_action.pdf') }}" target="_blank" class="btn btn-outline btn-sm">View Certificate</a>
+            </article>
+
+            <article class="experience-item mt-4">
+              <h4>Claude Platform 101</h4>
+              <p class="company"><em>Anthropic</em></p>
+              <p>
+                Gained experience working with the Claude API and platform directly — structuring
+                requests, integrating tool use, and building AI-powered features into applications,
+                a skill reflected in this portfolio's design.
+              </p>
+              <a href="{{ url_for('static', filename='assets/certificates/claude_platform_101.pdf') }}" target="_blank" class="btn btn-outline btn-sm">View Certificate</a>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

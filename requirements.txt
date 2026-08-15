@@ -1,0 +1,9 @@
+Flask>=2.3
+Flask-SQLAlchemy>=3.0
+python-dotenv>=1.0
+gunicorn>=21.0
+
+# Uncomment if deploying to a host with managed PostgreSQL
+# (e.g. Render, Supabase, Neon) instead of SQLite:
+# psycopg2-binary>=2.9
+

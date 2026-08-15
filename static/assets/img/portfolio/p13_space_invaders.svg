@@ -1,0 +1,36 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg13" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#171a21"/>
+      <stop offset="100%" stop-color="#0f1115"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg13)"/>
+  <!-- stars -->
+  <g fill="#2a2f3a">
+    <circle cx="40" cy="40" r="2"/><circle cx="120" cy="80" r="1.5"/><circle cx="500" cy="60" r="2"/>
+    <circle cx="560" cy="120" r="1.5"/><circle cx="80" cy="300" r="1.5"/><circle cx="520" cy="320" r="2"/>
+    <circle cx="300" cy="30" r="1.5"/><circle cx="200" cy="350" r="2"/>
+  </g>
+  <!-- pixel invader made of blocks -->
+  <g fill="#6c5ce7">
+    <rect x="240" y="120" width="20" height="20"/>
+    <rect x="340" y="120" width="20" height="20"/>
+    <rect x="260" y="140" width="20" height="20"/>
+    <rect x="320" y="140" width="20" height="20"/>
+    <rect x="240" y="160" width="140" height="20"/>
+    <rect x="240" y="180" width="20" height="20"/>
+    <rect x="280" y="180" width="20" height="20"/>
+    <rect x="300" y="180" width="20" height="20"/>
+    <rect x="340" y="180" width="20" height="20"/>
+    <rect x="260" y="200" width="20" height="20"/>
+    <rect x="320" y="200" width="20" height="20"/>
+    <rect x="220" y="220" width="20" height="20"/>
+    <rect x="360" y="220" width="20" height="20"/>
+  </g>
+  <!-- cannon at bottom -->
+  <rect x="290" y="320" width="20" height="20" fill="#c3c9d4"/>
+  <rect x="280" y="340" width="40" height="16" fill="#c3c9d4"/>
+  <rect x="298" y="290" width="4" height="30" fill="#6c5ce7"/>
+  <text x="300" y="390" text-anchor="middle" fill="#8890a0" font-family="monospace" font-size="16">SPACE INVADERS</text>
+</svg>

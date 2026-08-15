@@ -1,0 +1,31 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#171a21"/>
+      <stop offset="100%" stop-color="#0f1115"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg2)"/>
+  <!-- grid -->
+  <g stroke="#2a2f3a" stroke-width="4">
+    <line x1="240" y1="90" x2="240" y2="310"/>
+    <line x1="360" y1="90" x2="360" y2="310"/>
+    <line x1="180" y1="150" x2="420" y2="150"/>
+    <line x1="180" y1="250" x2="420" y2="250"/>
+  </g>
+  <!-- X's -->
+  <g stroke="#6c5ce7" stroke-width="8" stroke-linecap="round">
+    <line x1="195" y1="105" x2="235" y2="145"/>
+    <line x1="235" y1="105" x2="195" y2="145"/>
+    <line x1="255" y1="165" x2="295" y2="205"/>
+    <line x1="295" y1="165" x2="255" y2="205"/>
+    <line x1="315" y1="105" x2="355" y2="145"/>
+    <line x1="355" y1="105" x2="315" y2="145"/>
+  </g>
+  <!-- O's -->
+  <g fill="none" stroke="#f2c94c" stroke-width="8">
+    <circle cx="380" cy="185" r="20"/>
+    <circle cx="380" cy="285" r="20"/>
+  </g>
+  <text x="300" y="360" text-anchor="middle" fill="#8890a0" font-family="monospace" font-size="16">TIC-TAC-TOE XO GAME</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg15" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#171a21"/>
+      <stop offset="100%" stop-color="#0f1115"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg15)"/>
+  <!-- storefront -->
+  <rect x="150" y="150" width="300" height="140" rx="6" fill="#20242e" stroke="#2a2f3a" stroke-width="2"/>
+  <rect x="150" y="120" width="300" height="40" fill="#6c5ce7"/>
+  <g fill="#0f1115">
+    <rect x="160" y="120" width="20" height="40"/>
+    <rect x="200" y="120" width="20" height="40"/>
+    <rect x="240" y="120" width="20" height="40"/>
+    <rect x="280" y="120" width="20" height="40"/>
+    <rect x="320" y="120" width="20" height="40"/>
+    <rect x="360" y="120" width="20" height="40"/>
+    <rect x="400" y="120" width="20" height="40"/>
+  </g>
+  <!-- door -->
+  <rect x="270" y="220" width="60" height="70" fill="#2a2f3a"/>
+  <!-- windows -->
+  <rect x="170" y="180" width="70" height="50" fill="#2a2f3a" stroke="#6c5ce7" stroke-width="2"/>
+  <rect x="360" y="180" width="70" height="50" fill="#2a2f3a" stroke="#6c5ce7" stroke-width="2"/>
+  <!-- cart -->
+  <g transform="translate(240,300)">
+    <path d="M0 0 L10 0 L25 40 L80 40 L92 12 L18 12" fill="none" stroke="#c3c9d4" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="35" cy="55" r="7" fill="#c3c9d4"/>
+    <circle cx="72" cy="55" r="7" fill="#c3c9d4"/>
+  </g>
+  <text x="300" y="360" text-anchor="middle" fill="#8890a0" font-family="monospace" font-size="16">LEDGER &amp; CO. — ONLINE SHOP</text>
+</svg>

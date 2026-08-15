@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Magd - Python Developer Portfolio{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="hero" class="hero section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4 align-items-center">
+      <div class="col-lg-6 order-2 order-lg-1">
+        <div class="hero-content">
+          <h1 data-aos="fade-up" data-aos-delay="200">Hello, I'm <span class="highlight">Magd</span></h1>
+          <h2 data-aos="fade-up" data-aos-delay="300">
+            Python Developer &amp;
+            <span class="highlight">Flask Expert · Data Analyst · Automation Specialist · AI-Assisted Developer</span>
+          </h2>
+          <p data-aos="fade-up" data-aos-delay="400">
+            I build robust Python applications, create meaningful data visualizations, 
+            and solve complex problems with clean, efficient code. Certified in Claude and 
+            Claude Code, I integrate AI-assisted workflows — from prompt-driven development 
+            to API-level automation — to build and ship faster. 
+            Passionate about turning ideas into working software.
+          </p>
+          <div class="hero-actions" data-aos="fade-up" data-aos-delay="500">
+            <a href="{{ url_for('portfolio') }}" class="btn btn-primary">View My Work</a>
+            <a href="{{ url_for('contact') }}" class="btn btn-outline">Get In Touch</a>
+          </div>
+          <div class="social-links" data-aos="fade-up" data-aos-delay="600">
+            <a href="#"><i class="bi bi-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/magd-hamza-574796342/" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-github"></i></a>
+            <a href="#"><i class="bi bi-dribbble"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2">
+        <div class="hero-image" data-aos="zoom-in" data-aos-delay="300">
+          <div class="image-wrapper">
+            <img src="{{ url_for('static', filename='assets/img/profile/profile-square-11.webp') }}" alt="Magd" class="img-fluid">
+            <div class="floating-elements">
+              <div class="floating-card design" data-aos="fade-left" data-aos-delay="700">
+                <i class="bi bi-python"></i>
+                <span>Python</span>
+              </div>
+              <div class="floating-card code" data-aos="fade-right" data-aos-delay="800">
+                <i class="bi bi-code-slash"></i>
+                <span>Flask</span>
+              </div>
+              <div class="floating-card creativity" data-aos="fade-up" data-aos-delay="900">
+                <i class="bi bi-database"></i>
+                <span>Data</span>
+              </div>
+              <div class="floating-card ai" data-aos="fade-left" data-aos-delay="1000">
+                <i class="bi bi-stars"></i>
+                <span>AI / Claude</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
