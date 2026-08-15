@@ -163,11 +163,22 @@ a:hover { color: var(--accent-color); }
   align-items: center;
   gap: 8px;
   box-shadow: 0 8px 20px rgba(0,0,0,.35);
+  animation: float-bob 3.6s ease-in-out infinite;
+  will-change: transform;
 }
-.floating-card.design { top: 10%; left: -5%; }
-.floating-card.code { bottom: 15%; right: -5%; }
-.floating-card.creativity { bottom: -5%; left: 20%; }
+.floating-card.design { top: 8%; left: 2%; animation-delay: 0s; }
+.floating-card.code { bottom: 18%; right: 2%; animation-delay: .6s; }
+.floating-card.creativity { bottom: -3%; left: 22%; animation-delay: 1.2s; }
+.floating-card.ai { top: 22%; right: -2%; animation-delay: 1.8s; }
 .floating-card i { color: var(--accent-color); }
+
+@keyframes float-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .floating-card { animation: none; }
+}
 
 /* ---------- About ---------- */
 .about img { border: 1px solid var(--border-color); }
@@ -337,3 +348,95 @@ a:hover { color: var(--accent-color); }
 
 /* ---------- 404 / 500 pages ---------- */
 .error-section h1 { font-size: 6rem; color: var(--accent-color); }
+
+/* =========================================================
+   Responsive / Mobile fixes
+   ========================================================= */
+
+/* Tablets and small laptops */
+@media (max-width: 991px) {
+  .section { padding: 50px 0; }
+  .section-title { margin-bottom: 34px; }
+  .section-title h2 { font-size: 1.8rem; }
+
+  .hero { padding: 90px 0 50px; text-align: center; }
+  .hero-content { margin-bottom: 50px; }
+  .hero-content p { margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
+  .hero .social-links { justify-content: center; display: flex; }
+
+  .hero-image img { max-width: 300px; }
+}
+
+/* Phones */
+@media (max-width: 767px) {
+  .section { padding: 40px 0; }
+  .section-title h2 { font-size: 1.5rem; }
+  .section-title p { font-size: .9rem; }
+
+  /* Hero */
+  .hero { padding: 80px 0 40px; }
+  .hero-content h1 { font-size: 1.9rem; }
+  .hero-content h2 { font-size: 1.05rem; }
+  .hero-content p { font-size: .95rem; }
+
+  /* Buttons: full-width, comfortably tappable (44px min touch target) */
+  .hero-actions { flex-direction: column; align-items: stretch; gap: 10px; }
+  .hero-actions .btn,
+  .hero-actions a.btn-primary,
+  .hero-actions a.btn-outline {
+    width: 100%;
+    text-align: center;
+    padding: 13px 20px;
+    min-height: 46px;
+    font-size: .95rem;
+  }
+  .btn-outline { padding: 13px 20px; }
+
+  /* Floating cards: smaller + pulled inside the frame so nothing clips off-screen */
+  .hero-image { padding: 0 20px; max-width: 320px; margin: 0 auto; }
+  .hero-image img { max-width: 100%; }
+  .floating-card {
+    padding: 7px 11px;
+    font-size: .72rem;
+    gap: 6px;
+    border-radius: 8px;
+  }
+  .floating-card i { font-size: .85rem; }
+  .floating-card.design { top: 4%; left: 4%; }
+  .floating-card.code { bottom: 20%; right: 4%; }
+  .floating-card.creativity { bottom: 2%; left: 30%; }
+  .floating-card.ai { top: 18%; right: 4%; }
+
+  /* Buttons elsewhere: full-width + tappable */
+  .service-link,
+  .portfolio-overlay a { min-height: 44px; }
+  .contact-form button[type="submit"],
+  form button[type="submit"] {
+    width: 100%;
+    padding: 13px 20px;
+    min-height: 46px;
+  }
+
+  /* Sections spacing */
+  .service-item, .info-box, .contact-form { padding: 22px; }
+  .portfolio-filters { gap: 8px; }
+  .portfolio-filters li { padding: 7px 14px; font-size: .82rem; }
+  .portfolio-img img { height: 180px; }
+
+  .resume-item { margin-bottom: 28px; }
+  .education-item, .experience-item { padding-left: 14px; }
+
+  .info-item { gap: 10px; }
+  .icon-box { width: 38px; height: 38px; }
+
+  .footer .social-links a { width: 34px; height: 34px; margin: 0 4px 12px; }
+  .scroll-top { right: 14px; bottom: 14px; width: 40px; height: 40px; }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .hero-content h1 { font-size: 1.6rem; }
+  .floating-card span { display: none; } /* icon-only badges to avoid crowding */
+  .floating-card { padding: 8px; border-radius: 50%; }
+}
