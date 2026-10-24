@@ -25,7 +25,7 @@ the `Project` table is empty — delete `portfolio.db` to re-seed from scratch).
 9. Open Art Museum Explorer (`p14_API_search`)
 10. Recipe Scraper (`p11_Recipe-Scraper`)
 11. Dinosaur Game Automation (`p12_automation_for_dinosaur_game`)
-12. Space Invaders — **"Space Turtle War Invaders"** (`p13_arcade_game_space_invaders.` —
+12. Space Invaders (`p13_arcade_game_space_invaders.` —
     note the repo name literally ends with a period, that's not a typo). This one now uses
     your real code from `main.py` + `turtle_1.py`: a turtle-graphics ship shooter with
     lasers, falling stars, alien enemies, lives, levels, pause/restart. Since `turtle`

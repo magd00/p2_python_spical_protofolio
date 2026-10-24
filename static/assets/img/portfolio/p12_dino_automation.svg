@@ -1,37 +1,44 @@
-<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-labelledby="title desc">
+  <title id="title">Chrome Dinosaur Game</title>
+  <desc id="desc">The familiar monochrome dinosaur runner scene with a cactus, clouds, ground, and score.</desc>
   <defs>
-    <linearGradient id="bg12" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#171a21"/>
-      <stop offset="100%" stop-color="#0f1115"/>
+    <linearGradient id="background" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#20242e"/>
+      <stop offset="1" stop-color="#0f1115"/>
     </linearGradient>
+    <pattern id="pixels" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#c3c9d4"/>
+    </pattern>
   </defs>
-  <rect width="600" height="400" fill="url(#bg12)"/>
-  <!-- ground -->
-  <line x1="60" y1="290" x2="540" y2="290" stroke="#2a2f3a" stroke-width="3" stroke-dasharray="14 10"/>
-  <!-- dino silhouette jumping -->
-  <g fill="#6c5ce7">
-    <rect x="180" y="200" width="20" height="20"/>
-    <rect x="200" y="200" width="20" height="20"/>
-    <rect x="200" y="180" width="20" height="20"/>
-    <rect x="180" y="220" width="60" height="20"/>
-    <rect x="240" y="220" width="20" height="20"/>
-    <rect x="180" y="240" width="20" height="30"/>
-    <rect x="220" y="240" width="20" height="20"/>
-    <rect x="220" y="260" width="20" height="16"/>
+  <rect width="600" height="400" rx="28" fill="url(#background)"/>
+  <rect x="54" y="58" width="492" height="282" rx="15" fill="#f3f4f5"/>
+  <rect x="54" y="58" width="492" height="282" rx="15" fill="none" stroke="#343947" stroke-width="3"/>
+  <text x="466" y="96" fill="#626a76" font-family="monospace" font-size="16" letter-spacing="2">00042</text>
+  <g fill="#c1c6cd" opacity=".8">
+    <path d="M359 124h18v-8h18v8h22v8h-58z"/>
+    <path d="M442 151h12v-6h14v6h16v6h-42z"/>
   </g>
-  <!-- cactus obstacle -->
-  <g fill="#2ecc71">
-    <rect x="380" y="230" width="14" height="60"/>
-    <rect x="360" y="245" width="14" height="30"/>
-    <rect x="400" y="240" width="14" height="35"/>
+  <g fill="#535b66">
+    <path d="M116 249h18v-72h10v-25h37v10h-27v15h22v10h-22v26h-10v47h-28z"/>
+    <rect x="117" y="240" width="47" height="10"/>
+    <rect x="133" y="250" width="10" height="24"/>
+    <rect x="154" y="250" width="10" height="24"/>
+    <rect x="138" y="177" width="10" height="28"/>
+    <rect x="117" y="169" width="10" height="18"/>
+    <rect x="164" y="216" width="10" height="34"/>
+    <rect x="174" y="224" width="10" height="26"/>
+    <rect x="184" y="235" width="10" height="15"/>
   </g>
-  <!-- robot cursor / automation icon above dino -->
-  <g transform="translate(190,110)">
-    <rect x="0" y="0" width="40" height="30" rx="6" fill="#20242e" stroke="#c3c9d4" stroke-width="2"/>
-    <circle cx="12" cy="15" r="4" fill="#c3c9d4"/>
-    <circle cx="28" cy="15" r="4" fill="#c3c9d4"/>
-    <rect x="16" y="-10" width="8" height="10" fill="#c3c9d4"/>
-    <line x1="20" y1="30" x2="20" y2="55" stroke="#c3c9d4" stroke-width="2" stroke-dasharray="4 4"/>
+  <circle cx="153" cy="188" r="3.5" fill="#f3f4f5"/>
+  <g fill="#535b66">
+    <rect x="405" y="224" width="12" height="50"/>
+    <rect x="395" y="237" width="10" height="13"/>
+    <rect x="417" y="233" width="10" height="14"/>
+    <rect x="451" y="241" width="9" height="33"/>
+    <rect x="443" y="248" width="8" height="10"/>
+    <rect x="460" y="250" width="8" height="11"/>
   </g>
-  <text x="300" y="360" text-anchor="middle" fill="#8890a0" font-family="monospace" font-size="16">DINOSAUR GAME AUTOMATION</text>
+  <path d="M81 274h438" stroke="#727a85" stroke-width="3"/>
+  <path d="M205 286h34m36 0h18m58 0h27m47 0h16m31 0h22" stroke="#aeb4bc" stroke-width="3"/>
+  <text x="300" y="376" fill="#aab1c0" font-family="monospace" font-size="13" text-anchor="middle" letter-spacing="2">DINO RUN · ORIGINAL GAME</text>
 </svg>

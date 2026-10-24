@@ -30,14 +30,14 @@
         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ project.category }}">
           <div class="portfolio-card">
             <div class="portfolio-img">
-              <img src="{{ url_for('static', filename='assets/img/portfolio/' + project.image) }}" alt="{{ project.title }}" class="img-fluid">
+              <img src="{{ url_for('static', filename='assets/img/portfolio/' + project.image) }}" alt="{{ project.display_title }}" class="img-fluid">
               <div class="portfolio-overlay">
                 <a href="{{ url_for('static', filename='assets/img/portfolio/' + project.image) }}" class="glightbox portfolio-lightbox"><i class="bi bi-plus"></i></a>
                 <a href="{{ url_for('project_detail', project_id=project.id) }}" class="portfolio-details-link"><i class="bi bi-link"></i></a>
               </div>
             </div>
             <div class="portfolio-info">
-              <h4>{{ project.title }}</h4>
+              <h4>{{ project.display_title }}</h4>
               <p>{{ project.description[:100] }}...</p>
               <div class="portfolio-tags">
                 <span>{{ project.category|capitalize }}</span>

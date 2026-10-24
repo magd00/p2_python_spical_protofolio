@@ -1,24 +1,28 @@
-<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-labelledby="title desc">
+  <title id="title">Morse Code Translator</title>
+  <desc id="desc">A dark translator interface converting SOS into Morse code dots and dashes.</desc>
   <defs>
-    <linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#171a21"/>
-      <stop offset="100%" stop-color="#0f1115"/>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#20242e"/>
+      <stop offset="1" stop-color="#0f1115"/>
+    </linearGradient>
+    <linearGradient id="signal" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#9b8cff"/>
+      <stop offset="1" stop-color="#6c5ce7"/>
     </linearGradient>
   </defs>
-  <rect width="600" height="400" fill="url(#bg1)"/>
-  <!-- morse dots and dashes for "SOS" -->
-  <g fill="#6c5ce7">
-    <circle cx="140" cy="180" r="8"/><circle cx="165" cy="180" r="8"/><circle cx="190" cy="180" r="8"/>
-    <rect x="220" y="172" width="30" height="16" rx="8"/>
-    <rect x="260" y="172" width="30" height="16" rx="8"/>
-    <rect x="300" y="172" width="30" height="16" rx="8"/>
-    <circle cx="345" cy="180" r="8"/><circle cx="370" cy="180" r="8"/><circle cx="395" cy="180" r="8"/>
+  <rect width="600" height="400" rx="28" fill="url(#background)"/>
+  <circle cx="300" cy="186" r="112" fill="#6c5ce7" opacity=".08"/>
+  <rect x="72" y="78" width="456" height="244" rx="18" fill="#171a21" stroke="#343947" stroke-width="2"/>
+  <circle cx="101" cy="106" r="6" fill="#ff6b6b"/>
+  <circle cx="122" cy="106" r="6" fill="#f6c453"/>
+  <circle cx="143" cy="106" r="6" fill="#45d483"/>
+  <text x="300" y="151" fill="#aab1c0" font-family="Arial,sans-serif" font-size="17" text-anchor="middle" letter-spacing="3">TEXT → MORSE</text>
+  <text x="300" y="208" fill="#f4f5f8" font-family="Arial,sans-serif" font-size="50" font-weight="700" text-anchor="middle">SOS</text>
+  <g fill="url(#signal)">
+    <circle cx="180" cy="258" r="8"/><circle cx="206" cy="258" r="8"/><circle cx="232" cy="258" r="8"/>
+    <rect x="259" y="250" width="30" height="16" rx="8"/><rect x="299" y="250" width="30" height="16" rx="8"/><rect x="339" y="250" width="30" height="16" rx="8"/>
+    <circle cx="394" cy="258" r="8"/><circle cx="420" cy="258" r="8"/><circle cx="446" cy="258" r="8"/>
   </g>
-  <text x="300" y="230" text-anchor="middle" fill="#8890a0" font-family="monospace" font-size="14">S O S</text>
-  <!-- radio wave lines -->
-  <g fill="none" stroke="#c3c9d4" stroke-width="2" opacity="0.5">
-    <path d="M100 120 Q120 100 140 120 T180 120 T220 120"/>
-    <path d="M380 120 Q400 100 420 120 T460 120 T500 120"/>
-  </g>
-  <text x="300" y="340" text-anchor="middle" fill="#8890a0" font-family="monospace" font-size="16">MORSE CODE TRANSLATOR</text>
+  <text x="300" y="367" fill="#aab1c0" font-family="monospace" font-size="14" text-anchor="middle" letter-spacing="2">MORSE CODE TRANSLATOR</text>
 </svg>

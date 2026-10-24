@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ project.title }} - Project Details{% endblock %}
+{% block title %}{{ project.display_title }} - Project Details{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -141,6 +141,68 @@
     padding: 3px 10px;
   }
   .copy-btn:hover { color: var(--heading-color); border-color: var(--accent-color); }
+  .translator-input {
+    width: 100%;
+    min-height: 120px;
+    margin-bottom: 14px;
+    resize: vertical;
+  }
+  .experience-launcher {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-color: color-mix(in srgb, var(--accent-color) 45%, var(--border-color));
+  }
+  .experience-launcher h3 { margin-bottom: 6px; }
+  .experience-launcher p { margin: 0; }
+  .project-experience {
+    width: min(760px, calc(100% - 28px));
+    max-width: none;
+    max-height: min(88vh, 850px);
+    padding: 0;
+    overflow: auto;
+    color: var(--default-color);
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+  }
+  .project-experience::backdrop { background: rgba(5, 7, 12, .78); backdrop-filter: blur(4px); }
+  .experience-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 22px;
+    background: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+  }
+  .experience-header h2 { margin: 0; color: var(--heading-color); font-size: 1.2rem; }
+  .experience-content { padding: 22px; }
+  .experience-preview {
+    display: block;
+    width: 100%;
+    max-height: 330px;
+    margin-bottom: 18px;
+    object-fit: contain;
+    background: #0f1115;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+  }
+  .experience-frame {
+    width: 100%;
+    height: min(62vh, 560px);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: #0f1115;
+  }
+  @media (max-width: 575px) {
+    .experience-launcher { align-items: flex-start; flex-direction: column; }
+    .experience-content { padding: 16px; }
+  }
 </style>
 {% endblock %}
 
@@ -153,7 +215,7 @@
         <!-- Hero with the project's cover image as background -->
         <div class="project-hero" style="background-image: url('{{ url_for('static', filename='assets/img/portfolio/' + project.image) }}');">
           <div class="project-hero-content">
-            <h1>{{ project.title }}</h1>
+            <h1>{{ project.display_title }}</h1>
             <span class="badge bg-primary">{{ project.category|capitalize }}</span>
             <span class="badge bg-secondary">{{ project.technologies }}</span>
           </div>
@@ -165,66 +227,80 @@
           <p class="mb-0">{{ project.full_description or project.description }}</p>
         </div>
 
-        {% if simulation_slug %}
-        <div class="info-card">
-          <h3><i class="bi bi-display"></i> Simulation</h3>
-          <p>The original game provides its own AI/Bot mode. To preserve the strict iframe sandbox, the external game opens in a separate tab instead of being embedded here. This does not run the project's Python desktop automation.</p>
-          <a class="btn btn-outline-primary mt-3" href="{{ url_for('play_project', slug=simulation_slug) }}" target="_blank" rel="noopener">
-            <i class="bi bi-info-circle"></i> View Simulation details
+        {% if simulation_slug or is_morse_translator or is_space_invaders %}
+        <section class="info-card experience-launcher" aria-labelledby="experience-title">
+          <div>
+            <h3 id="experience-title"><i class="bi bi-play-circle"></i> Try this project</h3>
+            {% if is_morse_translator %}
+            <p>Open the interactive translator and convert your own text.</p>
+            {% elif simulation_slug %}
+            <p>Open the Simulation with instructions for running the original desktop automation.</p>
+            {% else %}
+            <p>Preview the original game's artwork and see how to run the Python game locally.</p>
+            {% endif %}
+          </div>
+          <a class="btn btn-primary"
+             href="{{ url_for('project_detail', project_id=project.id, experience='1') }}"
+             target="_blank" rel="noopener">
+            <i class="bi bi-box-arrow-up-right"></i> Open project in new tab
           </a>
-          <a class="btn btn-outline-secondary mt-3" href="https://elgoog.im/dinosaur-game/?bot" target="_blank" rel="noopener noreferrer">
-            <i class="bi bi-box-arrow-up-right"></i> Open original game with AI/Bot mode
-          </a>
-        </div>
+        </section>
+
+        <dialog class="project-experience" id="project-experience" aria-labelledby="experience-dialog-title">
+          <div class="experience-header">
+            <h2 id="experience-dialog-title">
+              {% if is_morse_translator %}Morse Code Translator
+              {% elif simulation_slug %}Dinosaur Automation Simulation
+              {% else %}Space Invaders{% endif %}
+            </h2>
+            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="closeProjectExperience()"
+                    aria-label="Close project experience">
+              <i class="bi bi-x-lg"></i> Close
+            </button>
+          </div>
+          <div class="experience-content">
+            {% if is_morse_translator %}
+            <p>Enter text to translate it using the same A-Z and 0-9 mapping as the original Python script. Unsupported characters, including spaces, are ignored.</p>
+            <label class="form-label" for="morse-input">Text to translate</label>
+            <textarea class="form-control translator-input" id="morse-input" autocomplete="off" placeholder="For example: SOS 123"></textarea>
+            <button type="button" class="btn btn-success" id="morse-translate">
+              <i class="bi bi-arrow-right-circle"></i> Translate
+            </button>
+            <label class="form-label d-block mt-4" for="morse-output">Morse code output</label>
+            <pre class="output-area" id="morse-output" role="status" aria-live="polite">Your Morse code output will appear here.</pre>
+            <p class="mt-3 mb-0">This demo runs in your browser and does not execute submitted Python code on the server.</p>
+            {% elif simulation_slug %}
+            <p>This Simulation describes the real desktop automation. It does not use the external game's built-in bot and cannot control another browser tab from inside this page.</p>
+            <iframe class="experience-frame"
+                    data-src="{{ url_for('play_project', slug=simulation_slug) }}"
+                    title="Dinosaur automation Simulation instructions"
+                    sandbox="allow-scripts"></iframe>
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <a class="btn btn-outline-primary" href="https://elgoog.im/dinosaur-game/" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-box-arrow-up-right"></i> Open original game
+              </a>
+              <a class="btn btn-outline-secondary" href="https://github.com/magd00/p12_automation_for_dinosaur_game/blob/main/mian.py" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-filetype-py"></i> View original automation script
+              </a>
+            </div>
+            {% else %}
+            {% set source_repo = project.github_link.rstrip('/').rstrip('.') %}
+            <img class="experience-preview"
+                 src="{{ url_for('static', filename='assets/img/portfolio/' + project.image) }}"
+                 alt="Artwork preview of the original Space Invaders game">
+            <p>The original game is written with Python Turtle and needs a desktop display, so it cannot run in this browser window. To play the actual game, run the original project locally:</p>
+            <pre class="code-editor">cd projects\p13_arcade_game_space_invaders
+py main.py</pre>
+            <p><strong>Controls:</strong> Arrow keys or A/D to move, Space to fire, P to pause, 1/2/3 to select difficulty, Enter to start, and R to restart after Game Over.</p>
+            <a class="btn btn-outline-primary" href="{{ source_repo }}/blob/main/main.py" target="_blank" rel="noopener noreferrer">
+              <i class="bi bi-filetype-py"></i> View original game script
+            </a>
+            {% endif %}
+          </div>
+        </dialog>
         {% endif %}
 
-        {% if project.code_snippet and not simulation_slug %}
-        <!-- Interactive code browser -->
-        <div class="info-card">
-          <h3><i class="bi bi-terminal"></i> Try it yourself</h3>
-
-          {% if project.demo_note %}
-          <div class="how-to-box">
-            <strong>⚠ This is a simplified demo:</strong> {{ project.demo_note }}
-          </div>
-          {% endif %}
-
-          <div class="how-to-box" style="border-left-color: var(--accent-color);">
-            <strong>How to use it:</strong> Click the <strong>"Code"</strong> tab to read the Python source,
-            then hit <strong>"▶ Run Code"</strong> to actually execute it on the server and watch the
-            <strong>"Output"</strong> tab fill in with the real result — no installation needed.
-          </div>
-
-          <div class="code-browser">
-            <div class="code-browser-tabs">
-              <div class="code-browser-tab active" id="tab-code" onclick="showTab('code')">
-                <i class="bi bi-code-slash"></i> Code
-              </div>
-              <div class="code-browser-tab" id="tab-output" onclick="showTab('output')">
-                <i class="bi bi-terminal"></i> Output
-              </div>
-              <div class="code-browser-toolbar">
-                <button class="copy-btn" onclick="copyCode()"><i class="bi bi-clipboard"></i> Copy</button>
-              </div>
-            </div>
-
-            <div class="code-browser-body active" id="body-code">
-              <pre class="code-editor" id="code-snippet">{{ project.code_snippet }}</pre>
-              <button onclick="runCode()" class="btn btn-success run-btn"><i class="bi bi-play-fill"></i> Run Code</button>
-            </div>
-
-            <div class="code-browser-body" id="body-output">
-              <div id="output" class="output-area">
-                {% if project.code_output %}<pre style="margin:0;">{{ project.code_output }}</pre>
-                {% else %}<p class="placeholder-text">Click "Run Code" on the Code tab to see real output here.</p>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        </div>
-        {% endif %}
-
-        {% if project.github_link and not simulation_slug %}
+                {% if project.github_link and not simulation_slug and not is_morse_translator and not is_space_invaders %}
         <div class="info-card">
           <h3><i class="bi bi-github"></i> Run the full project yourself</h3>
           <p>This page runs a simplified, self-contained demo of the core logic. To run the real, complete project — including any UI, file access, or packages that can't run in a browser demo — grab it from GitHub:</p>
@@ -256,45 +332,45 @@ python main.py</pre>
 </section>
 
 <script>
-function showTab(name) {
-  document.getElementById('tab-code').classList.toggle('active', name === 'code');
-  document.getElementById('tab-output').classList.toggle('active', name === 'output');
-  document.getElementById('body-code').classList.toggle('active', name === 'code');
-  document.getElementById('body-output').classList.toggle('active', name === 'output');
+{% if is_morse_translator %}
+const morseCode = {
+  A: '.-', B: '-...', C: '-.-.', D: '-..', E: '.', F: '..-.', G: '--.', H: '....',
+  I: '..', J: '.---', K: '-.-', L: '.-..', M: '--', N: '-.', O: '---', P: '.--.',
+  Q: '--.-', R: '.-.', S: '...', T: '-', U: '..-', V: '...-', W: '.--', X: '-..-',
+  Y: '-.--', Z: '--..',
+  '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
+  '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----'
+};
+
+document.getElementById('morse-translate').addEventListener('click', () => {
+  const text = document.getElementById('morse-input').value.toUpperCase();
+  const translated = Array.from(text, character => morseCode[character])
+    .filter(code => code !== undefined)
+    .join(' ');
+  document.getElementById('morse-output').textContent = translated;
+});
+{% endif %}
+
+{% if simulation_slug or is_morse_translator or is_space_invaders %}
+const projectExperience = document.getElementById('project-experience');
+
+function closeProjectExperience() {
+  projectExperience.close();
 }
 
-function copyCode() {
-  const code = document.getElementById('code-snippet').innerText;
-  navigator.clipboard.writeText(code);
-  const btn = event.currentTarget;
-  const original = btn.innerHTML;
-  btn.innerHTML = '<i class="bi bi-check2"></i> Copied';
-  setTimeout(() => { btn.innerHTML = original; }, 1500);
+if (new URLSearchParams(window.location.search).get('experience') === '1') {
+  const simulationFrame = projectExperience.querySelector('.experience-frame');
+  if (simulationFrame && !simulationFrame.hasAttribute('src')) {
+    simulationFrame.src = simulationFrame.dataset.src;
+  }
+  projectExperience.showModal();
 }
 
-function runCode() {
-  const code = document.getElementById('code-snippet').innerText;
-  const outputDiv = document.getElementById('output');
-
-  showTab('output');
-  outputDiv.innerHTML = '<div class="text-center"><div class="spinner-border" role="status"></div><br>Running code...</div>';
-
-  fetch('/run-code', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({code: code})
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.error) {
-      outputDiv.innerHTML = `<pre style="color:#ff6b6b; margin:0;">Error:\n${data.error}</pre>`;
-    } else {
-      outputDiv.innerHTML = `<pre style="margin:0;">${data.output || 'No output produced'}</pre>`;
-    }
-  })
-  .catch(error => {
-    outputDiv.innerHTML = `<pre style="color:#ff6b6b; margin:0;">Error: ${error.message}</pre>`;
-  });
-}
+projectExperience.addEventListener('click', event => {
+  if (event.target === projectExperience) {
+    projectExperience.close();
+  }
+});
+{% endif %}
 </script>
 {% endblock %}

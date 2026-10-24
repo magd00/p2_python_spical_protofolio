@@ -54,6 +54,13 @@ class Project(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
+    @property
+    def display_title(self):
+        repo = (self.github_link or '').rstrip('/').rstrip('.')
+        if repo.endswith('/p13_arcade_game_space_invaders'):
+            return 'Space Invaders'
+        return self.title
+
     def __repr__(self):
         return f'<Project {self.title}>'
 
@@ -146,15 +153,15 @@ INITIAL_PROJECTS = [
         "demo_note": 'The full app is a Flask website with a database, forms, and a JSON API. This demo runs the exact same stats-dashboard calculation (total cafes, unique areas, average coffee price) against a small sample of cafe records.',
     },
     {
-        "title": 'Space Invaders (Space Turtle War Invaders)',
+        "title": 'Space Invaders',
         "description": 'Turtle-graphics arcade shooter — pilot a mini spaceship, dodge falling stars, and blast waves of alien enemies.',
         "full_description": "A Space Invaders-style shooter built with Python's turtle module. You control a small ship along the bottom of the screen (A/D or arrow keys), fire lasers with spacebar, and score points by shooting down descending gold stars (+10) and a grid of colorful alien ships (+15) before they reach you or shoot back. You have 4 lives, the game tracks score/lives/level on screen, levels get harder as waves clear, and you can pause with P or restart with R after a Game Over. Built with two files: main.py (the Game class — collisions, scoring, levels, UI) and turtle_1.py (the Turtle-based sprite classes for the ship, lasers, stars, and enemies).",
         "category": 'game',
         "technologies": 'Python, turtle (standard library)',
         "github_link": 'https://github.com/magd00/p13_arcade_game_space_invaders.',
         "image": 'p13_space_invaders.svg',
-        "code_snippet": '# Space Turtle War Invaders - core game-loop logic\n# The real game (main.py + turtle_1.py) uses Python\'s `turtle` module for\n# graphics and needs a real display/keyboard, so it can\'t run headlessly on\n# a web server. This demo reproduces the *actual* collision/scoring logic\n# from Game.check_collisions() (distance < 25 = hit, +10 for a star, +15\n# for an enemy, lose a life if an enemy laser gets you) using simple\n# coordinates instead of turtle sprites, so you can see the real mechanics.\n\nimport random\n\nclass Entity:\n    def __init__(self, x, y, kind):\n        self.x, self.y, self.kind = x, y, kind\n        self.alive = True\n\n    def distance(self, other):\n        return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5\n\nrandom.seed(1)\n\nstars = [Entity(-330 + col * 50, 0, "star") for col in range(6)]\nenemies = [Entity(-360 + col * 50, 200, "enemy") for col in range(6)]\n\n# simulate the player firing a burst of lasers, roughly aimed at targets\ntargets = stars + enemies\nlasers = [Entity(t.x + random.randint(-15, 15), t.y, "laser") for t in random.sample(targets, 8)]\n\nscore = 0\nlives = 4\n\nfor laser in lasers:\n    for star in stars:\n        if star.alive and laser.distance(star) < 25:\n            star.alive = False\n            score += 10\n    for enemy in enemies:\n        if enemy.alive and laser.distance(enemy) < 25:\n            enemy.alive = False\n            score += 15\n\n# simulate one enemy laser slipping through\nif random.random() < 0.5:\n    lives -= 1\n\nstars_left = sum(1 for s in stars if s.alive)\nenemies_left = sum(1 for e in enemies if e.alive)\n\nprint("SPACE TURTLE WAR INVADERS - simulated wave")\nprint("-" * 45)\nprint(f"Stars destroyed  : {6 - stars_left}/6  (+10 each)")\nprint(f"Enemies destroyed: {6 - enemies_left}/6  (+15 each)")\nprint(f"Score: {score}   Lives: {lives}")\nprint("LEVEL COMPLETE!" if stars_left == 0 and enemies_left == 0 else "Wave in progress...")\nprint()\nprint("Controls in the real game: A/D or arrow keys to move, SPACE to fire,")\nprint("P to pause, R to restart after Game Over.")\n',
-        "code_output": 'SPACE TURTLE WAR INVADERS - simulated wave\n---------------------------------------------\nStars destroyed  : 5/6  (+10 each)\nEnemies destroyed: 3/6  (+15 each)\nScore: 95   Lives: 4\nWave in progress...\n\nControls in the real game: A/D or arrow keys to move, SPACE to fire,\nP to pause, R to restart after Game Over.\n',
+        "code_snippet": '# Space Invaders - core game-loop logic\n# The real game (main.py + turtle_1.py) uses Python\'s `turtle` module for\n# graphics and needs a real display/keyboard, so it can\'t run headlessly on\n# a web server. This demo reproduces the *actual* collision/scoring logic\n# from Game.check_collisions() (distance < 25 = hit, +10 for a star, +15\n# for an enemy, lose a life if an enemy laser gets you) using simple\n# coordinates instead of turtle sprites, so you can see the real mechanics.\n\nimport random\n\nclass Entity:\n    def __init__(self, x, y, kind):\n        self.x, self.y, self.kind = x, y, kind\n        self.alive = True\n\n    def distance(self, other):\n        return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5\n\nrandom.seed(1)\n\nstars = [Entity(-330 + col * 50, 0, "star") for col in range(6)]\nenemies = [Entity(-360 + col * 50, 200, "enemy") for col in range(6)]\n\n# simulate the player firing a burst of lasers, roughly aimed at targets\ntargets = stars + enemies\nlasers = [Entity(t.x + random.randint(-15, 15), t.y, "laser") for t in random.sample(targets, 8)]\n\nscore = 0\nlives = 4\n\nfor laser in lasers:\n    for star in stars:\n        if star.alive and laser.distance(star) < 25:\n            star.alive = False\n            score += 10\n    for enemy in enemies:\n        if enemy.alive and laser.distance(enemy) < 25:\n            enemy.alive = False\n            score += 15\n\n# simulate one enemy laser slipping through\nif random.random() < 0.5:\n    lives -= 1\n\nstars_left = sum(1 for s in stars if s.alive)\nenemies_left = sum(1 for e in enemies if e.alive)\n\n        print("SPACE INVADERS - simulated wave")\nprint("-" * 45)\nprint(f"Stars destroyed  : {6 - stars_left}/6  (+10 each)")\nprint(f"Enemies destroyed: {6 - enemies_left}/6  (+15 each)")\nprint(f"Score: {score}   Lives: {lives}")\nprint("LEVEL COMPLETE!" if stars_left == 0 and enemies_left == 0 else "Wave in progress...")\nprint()\nprint("Controls in the real game: A/D or arrow keys to move, SPACE to fire,")\nprint("P to pause, R to restart after Game Over.")\n',
+        "code_output": 'SPACE INVADERS - simulated wave\n---------------------------------------------\nStars destroyed  : 5/6  (+10 each)\nEnemies destroyed: 3/6  (+15 each)\nScore: 95   Lives: 4\nWave in progress...\n\nControls in the real game: A/D or arrow keys to move, SPACE to fire,\nP to pause, R to restart after Game Over.\n',
         "demo_note": "The real game uses Python's turtle module for graphics and needs a real display/keyboard, so it can't run on a server. This demo runs the actual collision/scoring formula from the game's check_collisions() method against plain coordinates instead of turtle sprites.",
     },
     {
@@ -212,7 +219,7 @@ INITIAL_PROJECTS = [
         "category": 'automation',
         "technologies": 'Python, PyAutoGUI, Screen Capture',
         "github_link": 'https://github.com/magd00/p12_automation_for_dinosaur_game',
-        "image": 'p12_dino_automation.svg',
+        "image": 'p12_dino_game.jpg',
         "code_snippet": '# Automation for Dinosaur Game - core decision logic\n# (Full project uses PyAutoGUI + screen capture to read the live game\n#  and send real keypresses; this demo simulates the obstacle feed and\n#  shows the same jump/duck decision-making without needing a screen.)\n\nimport random\n\ndef decide_action(distance_to_obstacle, obstacle_type, speed):\n    reaction_distance = 120 + speed * 4\n    if distance_to_obstacle > reaction_distance:\n        return "run"\n    if obstacle_type == "bird_low":\n        return "duck"\n    return "jump"\n\nrandom.seed(7)\nspeed = 10\nscore = 0\nlog = []\n\nfor tick in range(8):\n    obstacle = random.choice(["cactus", "cactus", "bird_low", "bird_high"])\n    distance = random.randint(40, 300)\n    action = decide_action(distance, obstacle, speed)\n    score += 10\n    speed += 0.5\n    log.append((tick, obstacle, distance, action))\n\nprint("Dino Game Automation - decision log")\nprint("-" * 45)\nprint(f"{\'tick\':<5}{\'obstacle\':<12}{\'distance\':<10}{\'action\'}")\nfor tick, obstacle, distance, action in log:\n    print(f"{tick:<5}{obstacle:<12}{distance:<10}{action}")\n\nprint(f"\\nFinal simulated score: {score}")\n',
         "code_output": 'Dino Game Automation - decision log\n---------------------------------------------\ntick obstacle    distance  action\n0    bird_low    117       duck\n1    bird_high   64        jump\n2    cactus      88        jump\n3    bird_low    69        duck\n4    cactus      59        jump\n5    cactus      262       run\n6    bird_high   75        jump\n7    cactus      86        jump\n\nFinal simulated score: 80\n',
         "demo_note": "The real bot watches your screen live and sends keypresses via PyAutoGUI — it needs an actual screen to see, so it can't run on a server. This demo runs the same jump/duck decision logic against a simulated sequence of obstacles.",
@@ -283,12 +290,17 @@ def project_detail(project_id):
     """Show individual project details"""
     project = Project.query.get_or_404(project_id)
     simulation_slug = None
+    is_morse_translator = (project.github_link or '').rstrip('/').endswith('/p1_Morce_Code_translator')
+    project_repo = (project.github_link or '').rstrip('/').rstrip('.')
+    is_space_invaders = project_repo.endswith('/p13_arcade_game_space_invaders')
     if (project.github_link or '').rstrip('/').endswith('/p12_automation_for_dinosaur_game'):
         simulation_slug = 'p12_automation_for_dinosaur_game'
     return render_template(
         'project_detail.html',
         project=project,
         simulation_slug=simulation_slug,
+        is_morse_translator=is_morse_translator,
+        is_space_invaders=is_space_invaders,
     )
 
 
