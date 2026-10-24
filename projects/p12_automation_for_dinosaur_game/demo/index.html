@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dinosaur Automation Simulation</title>
+  <link rel="stylesheet" href="simulation.css">
+</head>
+<body>
+  <main class="simulation">
+    <header class="simulation__header">
+      <div>
+        <p class="eyebrow">ORIGINAL GAME · AUTOMATION SIMULATION</p>
+        <h1>Dinosaur Automation Simulation</h1>
+        <p class="intro">To automate the original game without elgooG's AI mode, run the existing Python script on the desktop that displays the game. This browser page cannot control another site's tab or access your screen.</p>
+      </div>
+    </header>
+
+    <section class="method" aria-label="How this Simulation relates to the Python source">
+      <h2>Run the original automation locally</h2>
+      <p>The existing <code>mian.py</code> script opens <code>https://elgoog.im/dinosaur-game/</code> in a Selenium-controlled Chrome window, captures desktop pixels with PIL/OpenCV, and sends real key presses with PyAutoGUI. It does not use the site's AI/Bot mode. The script must run on your computer because it needs access to your desktop.</p>
+      <pre class="command-block"><code>cd projects\p12_automation_for_dinosaur_game
+py -m pip install -r requirements.txt
+py mian.py</code></pre>
+      <p class="notice"><strong>Before running:</strong> install Chrome, keep the game window and desktop visible, and allow the script to use mouse/keyboard input. Stop it with <kbd>Ctrl</kbd> + <kbd>C</kbd>. The script clicks a fixed screen position during startup, so it assumes a desktop layout where the game is visible at that location.</p>
+      <div class="method__actions">
+        <a class="launch-link" href="https://elgoog.im/dinosaur-game/" target="_blank" rel="noopener noreferrer">Open original game (manual play)</a>
+        <a href="https://github.com/magd00/p12_automation_for_dinosaur_game/blob/main/mian.py" target="_blank" rel="noopener noreferrer">View original Python source (mian.py)</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

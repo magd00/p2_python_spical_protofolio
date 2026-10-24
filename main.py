@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import Flask, abort, render_template, request, redirect, url_for, flash, jsonify, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from pathlib import Path
 import traceback
 import io
 import contextlib
 import os
+import re
 from dotenv import load_dotenv
 
 # Load variables from a local .env file (if present) into the environment.
@@ -280,7 +282,51 @@ def portfolio():
 def project_detail(project_id):
     """Show individual project details"""
     project = Project.query.get_or_404(project_id)
-    return render_template('project_detail.html', project=project)
+    simulation_slug = None
+    if (project.github_link or '').rstrip('/').endswith('/p12_automation_for_dinosaur_game'):
+        simulation_slug = 'p12_automation_for_dinosaur_game'
+    return render_template(
+        'project_detail.html',
+        project=project,
+        simulation_slug=simulation_slug,
+    )
+
+
+def resolve_project_dir(slug):
+    """Resolve a project folder under projects/ without allowing path traversal."""
+    if not re.fullmatch(r'[A-Za-z0-9_-]+', slug):
+        return None
+
+    projects_root = (Path(__file__).resolve().parent / 'projects').resolve()
+    project_dir = (projects_root / slug).resolve()
+    if project_dir.parent != projects_root or not project_dir.is_dir():
+        return None
+    return project_dir
+
+
+@app.route('/play/<slug>/')
+def play_project_root(slug):
+    """Redirect the project play URL to its isolated demo directory."""
+    if resolve_project_dir(slug) is None:
+        abort(404)
+    return redirect(url_for('play_project', slug=slug))
+
+
+@app.route('/play/<slug>/demo/', defaults={'filename': 'index.html'})
+@app.route('/play/<slug>/demo/<path:filename>')
+def play_project(slug, filename):
+    """Serve only static files from a project's demo/ directory."""
+    project_dir = resolve_project_dir(slug)
+    if project_dir is None:
+        abort(404)
+
+    demo_dir = (project_dir / 'demo').resolve()
+    if demo_dir.parent != project_dir or not demo_dir.is_dir():
+        abort(404)
+    requested_file = (demo_dir / filename).resolve()
+    if requested_file != demo_dir and demo_dir not in requested_file.parents:
+        abort(404)
+    return send_from_directory(demo_dir, filename)
 
 @app.route('/run-code', methods=['POST'])
 def run_code():

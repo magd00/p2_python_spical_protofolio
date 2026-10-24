@@ -165,7 +165,20 @@
           <p class="mb-0">{{ project.full_description or project.description }}</p>
         </div>
 
-        {% if project.code_snippet %}
+        {% if simulation_slug %}
+        <div class="info-card">
+          <h3><i class="bi bi-display"></i> Simulation</h3>
+          <p>The original game provides its own AI/Bot mode. To preserve the strict iframe sandbox, the external game opens in a separate tab instead of being embedded here. This does not run the project's Python desktop automation.</p>
+          <a class="btn btn-outline-primary mt-3" href="{{ url_for('play_project', slug=simulation_slug) }}" target="_blank" rel="noopener">
+            <i class="bi bi-info-circle"></i> View Simulation details
+          </a>
+          <a class="btn btn-outline-secondary mt-3" href="https://elgoog.im/dinosaur-game/?bot" target="_blank" rel="noopener noreferrer">
+            <i class="bi bi-box-arrow-up-right"></i> Open original game with AI/Bot mode
+          </a>
+        </div>
+        {% endif %}
+
+        {% if project.code_snippet and not simulation_slug %}
         <!-- Interactive code browser -->
         <div class="info-card">
           <h3><i class="bi bi-terminal"></i> Try it yourself</h3>
@@ -211,7 +224,7 @@
         </div>
         {% endif %}
 
-        {% if project.github_link %}
+        {% if project.github_link and not simulation_slug %}
         <div class="info-card">
           <h3><i class="bi bi-github"></i> Run the full project yourself</h3>
           <p>This page runs a simplified, self-contained demo of the core logic. To run the real, complete project — including any UI, file access, or packages that can't run in a browser demo — grab it from GitHub:</p>
