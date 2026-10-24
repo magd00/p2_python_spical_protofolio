@@ -293,6 +293,7 @@ def project_detail(project_id):
     is_morse_translator = (project.github_link or '').rstrip('/').endswith('/p1_Morce_Code_translator')
     project_repo = (project.github_link or '').rstrip('/').rstrip('.')
     is_space_invaders = project_repo.endswith('/p13_arcade_game_space_invaders')
+    is_watermark_app = project_repo.endswith('/p3_image_watermarking_app')
     if (project.github_link or '').rstrip('/').endswith('/p12_automation_for_dinosaur_game'):
         simulation_slug = 'p12_automation_for_dinosaur_game'
     return render_template(
@@ -301,6 +302,7 @@ def project_detail(project_id):
         simulation_slug=simulation_slug,
         is_morse_translator=is_morse_translator,
         is_space_invaders=is_space_invaders,
+        is_watermark_app=is_watermark_app,
     )
 
 
