@@ -225,6 +225,95 @@
     object-fit: contain;
   }
   .watermark-preview canvas[hidden] { display: none; }
+  .typing-demo {
+    --typing-fire: #ff6b35;
+    --typing-amber: #ffaa00;
+    --typing-green: #00ff88;
+    padding: 20px;
+    color: #fff;
+    background: #1a0a00;
+    border: 1px solid #7a300d;
+    border-radius: 12px;
+  }
+  .typing-demo__title {
+    margin: 0 0 18px;
+    color: #ffcc00;
+    text-align: center;
+    letter-spacing: .08em;
+    text-shadow: 0 0 14px rgba(255, 68, 0, .65);
+  }
+  .typing-demo__toolbar,
+  .typing-demo__stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .typing-demo__timer {
+    color: var(--typing-amber);
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .typing-demo__timer--urgent { color: #ff3333; }
+  .typing-demo__passage {
+    min-height: 96px;
+    margin-bottom: 14px;
+    padding: 18px;
+    color: #444;
+    background: #090909;
+    border: 1px solid #44200e;
+    border-radius: 8px;
+    font: 700 1.15rem/1.8 "Courier New", monospace;
+    overflow-wrap: anywhere;
+  }
+  .typing-demo__char { border-radius: 2px; }
+  .typing-demo__char--correct { color: #00ff88; background: #003300; }
+  .typing-demo__char--incorrect { color: #ff3333; background: #330000; }
+  .typing-demo__char--current { color: #ffaa00; background: #332200; outline: 1px solid #ffaa00; }
+  .typing-demo__input {
+    width: 100%;
+    min-height: 50px;
+    margin-bottom: 16px;
+    color: #fff;
+    background: #2a2a2a;
+    border-color: #7a300d;
+  }
+  .typing-demo__input:focus {
+    color: #fff;
+    background: #2a2a2a;
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 .2rem rgba(255, 107, 53, .2);
+  }
+  .typing-demo__stat {
+    min-width: 92px;
+    color: var(--typing-amber);
+    font-weight: 600;
+  }
+  .typing-demo__stat strong { display: block; color: var(--typing-green); font-size: 1.25rem; }
+  .typing-demo__status { min-height: 28px; color: var(--typing-amber); }
+  .typing-demo__status--error { color: #ff6b6b; }
+  .typing-demo__status--success { color: var(--typing-green); }
+  .typing-demo__result {
+    margin-top: 14px;
+    padding: 16px;
+    background: #251006;
+    border: 1px solid #7a300d;
+    border-radius: 8px;
+  }
+  .typing-demo__result[hidden] { display: none; }
+  .typing-demo__result h3 { color: #ffcc00; font-size: 1.1rem; }
+  .typing-demo__result p:last-child { margin-bottom: 0; }
+  .typing-demo__start {
+    color: #17100a;
+    background: linear-gradient(135deg, #ffcc00, #ff6b35);
+    border: 0;
+    font-weight: 700;
+    box-shadow: 0 0 18px rgba(255, 68, 0, .3);
+  }
+  .typing-demo__start:hover { color: #17100a; filter: brightness(1.08); }
   .watermark-preview-empty { color: var(--default-color); text-align: center; }
   @media (max-width: 575px) {
     .watermark-controls { grid-template-columns: 1fr; }
@@ -258,7 +347,7 @@
           <p class="mb-0">{{ project.full_description or project.description }}</p>
         </div>
 
-        {% if simulation_slug or is_morse_translator or is_space_invaders or is_watermark_app %}
+        {% if simulation_slug or is_morse_translator or is_space_invaders or is_watermark_app or is_typing_test %}
         <section class="info-card experience-launcher" aria-labelledby="experience-title">
           <div>
             <h3 id="experience-title"><i class="bi bi-play-circle"></i> Try this project</h3>
@@ -268,6 +357,8 @@
             <p>Open the Simulation with instructions for running the original desktop automation.</p>
             {% elif is_watermark_app %}
             <p>Apply and preview a custom text watermark on an image in your browser.</p>
+            {% elif is_typing_test %}
+            <p>Type the displayed passage and follow your speed, accuracy, and progress in real time.</p>
             {% else %}
             <p>Preview the original game's artwork and see how to run the Python game locally.</p>
             {% endif %}
@@ -285,6 +376,7 @@
               {% if is_morse_translator %}Morse Code Translator
               {% elif simulation_slug %}Dinosaur Automation Simulation
               {% elif is_watermark_app %}Image Watermarking App
+              {% elif is_typing_test %}Typing Speed Test
               {% else %}Space Invaders{% endif %}
             </h2>
             <button type="button" class="btn btn-outline-secondary btn-sm" onclick="closeProjectExperience()"
@@ -350,6 +442,45 @@
             </div>
             <p class="mt-3 mb-0" id="watermark-status" role="status" aria-live="polite">Ready. Choose an image to begin.</p>
             <p class="mt-2 mb-0">This browser-based experience mirrors the original app's text, five positions, 10–100% opacity, and 10–200 font-size controls. Nothing is sent to the server.</p>
+            {% elif is_typing_test %}
+            <section class="typing-demo" id="typing-demo">
+              <h3 class="typing-demo__title">TYPING SPEED TEST</h3>
+              <div class="typing-demo__toolbar">
+                <div class="typing-demo__timer" id="typing-timer" role="timer" aria-live="off">Time: 30s</div>
+                <div>
+                  <label class="form-label mb-0 me-2" for="typing-time-limit">Time limit</label>
+                  <select class="form-select d-inline-block" id="typing-time-limit" style="width:auto">
+                    <option value="15">15 seconds</option>
+                    <option value="30" selected>30 seconds</option>
+                    <option value="45">45 seconds</option>
+                    <option value="60">60 seconds</option>
+                    <option value="90">90 seconds</option>
+                    <option value="120">120 seconds</option>
+                  </select>
+                </div>
+              </div>
+              <div class="typing-demo__passage" id="typing-passage" aria-label="Text to type"></div>
+              <label class="form-label" for="typing-input">Type the passage here</label>
+              <input class="form-control typing-demo__input" id="typing-input" type="text"
+                     autocomplete="off" autocapitalize="off" spellcheck="false"
+                     placeholder="Press Start Typing to begin" disabled>
+              <div class="typing-demo__stats" aria-live="polite">
+                <div class="typing-demo__stat">WPM<strong id="typing-wpm">--</strong></div>
+                <div class="typing-demo__stat">Accuracy<strong id="typing-accuracy">--%</strong></div>
+                <div class="typing-demo__stat">Correct<strong id="typing-correct">0</strong></div>
+                <div class="typing-demo__stat">Errors<strong id="typing-errors">0</strong></div>
+                <div class="typing-demo__stat">Typed<strong id="typing-count">0</strong></div>
+              </div>
+              <p class="typing-demo__status" id="typing-status" role="status" aria-live="polite">Ready. Press Start Typing.</p>
+              <button class="btn typing-demo__start" id="typing-start" type="button">
+                <i class="bi bi-fire"></i> Start Typing
+              </button>
+              <div class="typing-demo__result" id="typing-result" hidden>
+                <h3 id="typing-result-title">Test results</h3>
+                <p id="typing-result-summary"></p>
+              </div>
+            </section>
+            <p class="mt-3 mb-0">The typing experience runs locally in your browser. Your input is not sent to the server.</p>
             {% elif simulation_slug %}
             <p>This Simulation describes the real desktop automation. It does not use the external game's built-in bot and cannot control another browser tab from inside this page.</p>
             <iframe class="experience-frame"
@@ -381,7 +512,7 @@ py main.py</pre>
         </dialog>
         {% endif %}
 
-                {% if project.github_link and not simulation_slug and not is_morse_translator and not is_space_invaders and not is_watermark_app %}
+                {% if project.github_link and not simulation_slug and not is_morse_translator and not is_space_invaders and not is_watermark_app and not is_typing_test %}
         <div class="info-card">
           <h3><i class="bi bi-github"></i> Run the full project yourself</h3>
           <p>This page runs a simplified, self-contained demo of the core logic. To run the real, complete project — including any UI, file access, or packages that can't run in a browser demo — grab it from GitHub:</p>
@@ -430,6 +561,173 @@ document.getElementById('morse-translate').addEventListener('click', () => {
     .join(' ');
   document.getElementById('morse-output').textContent = translated;
 });
+{% endif %}
+
+{% if is_typing_test %}
+const typingReference = 'The quick brown fox jumps over the lazy dog';
+const typingInput = document.getElementById('typing-input');
+const typingPassage = document.getElementById('typing-passage');
+const typingTimeLimit = document.getElementById('typing-time-limit');
+const typingTimer = document.getElementById('typing-timer');
+const typingStatus = document.getElementById('typing-status');
+const typingResult = document.getElementById('typing-result');
+let typingActive = false;
+let typingStartTime = 0;
+let typingRemainingTime = Number(typingTimeLimit.value);
+let typingTimerId = null;
+
+function renderTypingPassage(typedText = '') {
+  const typedCharacters = Array.from(typedText);
+  const referenceCharacters = Array.from(typingReference);
+  const fragment = document.createDocumentFragment();
+
+  referenceCharacters.forEach((character, index) => {
+    const span = document.createElement('span');
+    span.className = 'typing-demo__char';
+    span.textContent = character;
+    if (index < typedCharacters.length) {
+      span.classList.add(
+        typedCharacters[index] === character
+          ? 'typing-demo__char--correct'
+          : 'typing-demo__char--incorrect'
+      );
+    } else if (index === typedCharacters.length) {
+      span.classList.add('typing-demo__char--current');
+    }
+    fragment.appendChild(span);
+  });
+  typingPassage.replaceChildren(fragment);
+}
+
+function updateTypingProgress() {
+  const typedText = typingInput.value;
+  const typedCharacters = Array.from(typedText);
+  const referenceCharacters = Array.from(typingReference);
+  const overlappingLength = Math.min(typedCharacters.length, referenceCharacters.length);
+  let correct = 0;
+  let errors = 0;
+
+  for (let index = 0; index < overlappingLength; index += 1) {
+    if (typedCharacters[index] === referenceCharacters[index]) {
+      correct += 1;
+    } else {
+      errors += 1;
+    }
+  }
+
+  document.getElementById('typing-count').textContent = typedCharacters.length;
+  document.getElementById('typing-correct').textContent = correct;
+  document.getElementById('typing-errors').textContent = errors;
+
+  if (typedCharacters.length > 0) {
+    const accuracy = Math.round((correct / typedCharacters.length) * 1000) / 10;
+    document.getElementById('typing-accuracy').textContent = `${accuracy}%`;
+    const elapsedSeconds = (performance.now() - typingStartTime) / 1000;
+    if (elapsedSeconds > 0) {
+      const currentWpm = Math.round((typedCharacters.length / elapsedSeconds) * 12);
+      document.getElementById('typing-wpm').textContent = currentWpm;
+    }
+
+    if (typedText === typingReference.slice(0, typedText.length)) {
+      const progress = Math.floor((typedCharacters.length / referenceCharacters.length) * 100);
+      typingStatus.textContent = `Typing... ${progress}% complete`;
+      typingStatus.className = 'typing-demo__status typing-demo__status--success';
+    } else {
+      typingStatus.textContent = 'Mistake! Check the highlighted text.';
+      typingStatus.className = 'typing-demo__status typing-demo__status--error';
+    }
+  } else {
+    document.getElementById('typing-accuracy').textContent = '--%';
+    document.getElementById('typing-wpm').textContent = '--';
+    typingStatus.textContent = 'Start typing...';
+    typingStatus.className = 'typing-demo__status';
+  }
+
+  renderTypingPassage(typedText);
+  if (typedText === typingReference) {
+    finishTypingTest(true);
+  }
+}
+
+function updateTypingTimer() {
+  if (!typingActive) return;
+  typingRemainingTime -= 1;
+  typingTimer.textContent = `Time: ${Math.max(typingRemainingTime, 0)}s`;
+  typingTimer.classList.toggle('typing-demo__timer--urgent', typingRemainingTime <= 5);
+
+  if (typingRemainingTime <= 0) {
+    finishTypingTest(false);
+  }
+}
+
+function finishTypingTest(completed) {
+  if (!typingActive) return;
+  typingActive = false;
+  window.clearInterval(typingTimerId);
+  typingInput.disabled = true;
+  const typedCharacters = Array.from(typingInput.value);
+
+  if (completed) {
+    typingStatus.textContent = 'Perfect! You completed the text!';
+    typingStatus.className = 'typing-demo__status typing-demo__status--success';
+  } else {
+    typingStatus.textContent = "Time's up!";
+    typingStatus.className = 'typing-demo__status typing-demo__status--error';
+  }
+
+  if (typedCharacters.length === 0) {
+    typingResult.hidden = true;
+    return;
+  }
+
+  const elapsedSeconds = Math.max((performance.now() - typingStartTime) / 1000, 0);
+  const correct = typedCharacters.reduce((total, character, index) => (
+    total + (character === Array.from(typingReference)[index] ? 1 : 0)
+  ), 0);
+  const errors = Math.max(0, Math.min(typedCharacters.length, typingReference.length) - correct);
+  const wpm = elapsedSeconds > 0
+    ? Math.round((typedCharacters.length / 5) / (elapsedSeconds / 60))
+    : 0;
+  const accuracy = Math.round((correct / typedCharacters.length) * 1000) / 10;
+  document.getElementById('typing-wpm').textContent = wpm;
+  document.getElementById('typing-accuracy').textContent = `${accuracy}%`;
+  document.getElementById('typing-result-title').textContent = completed ? 'Text completed!' : "Time's up!";
+  document.getElementById('typing-result-summary').textContent =
+    `WPM: ${wpm} · Accuracy: ${accuracy}% · Time: ${Math.round(elapsedSeconds)}s · Correct: ${correct} · Errors: ${errors} · Typed: ${typedCharacters.length} / ${Array.from(typingReference).length} characters`;
+  typingResult.hidden = false;
+}
+
+typingTimeLimit.addEventListener('change', () => {
+  typingRemainingTime = Number(typingTimeLimit.value);
+  typingTimer.textContent = `Time: ${typingRemainingTime}s`;
+  typingTimer.classList.remove('typing-demo__timer--urgent');
+});
+
+typingInput.addEventListener('input', updateTypingProgress);
+
+document.getElementById('typing-start').addEventListener('click', () => {
+  window.clearInterval(typingTimerId);
+  typingActive = true;
+  typingRemainingTime = Number(typingTimeLimit.value);
+  typingStartTime = performance.now();
+  typingInput.disabled = false;
+  typingInput.value = '';
+  typingInput.focus();
+  typingTimer.textContent = `Time: ${typingRemainingTime}s`;
+  typingTimer.classList.remove('typing-demo__timer--urgent');
+  document.getElementById('typing-wpm').textContent = '--';
+  document.getElementById('typing-accuracy').textContent = '--%';
+  document.getElementById('typing-correct').textContent = '0';
+  document.getElementById('typing-errors').textContent = '0';
+  document.getElementById('typing-count').textContent = '0';
+  typingStatus.textContent = 'Start typing...';
+  typingStatus.className = 'typing-demo__status';
+  typingResult.hidden = true;
+  renderTypingPassage();
+  typingTimerId = window.setInterval(updateTypingTimer, 1000);
+});
+
+renderTypingPassage();
 {% endif %}
 
 {% if is_watermark_app %}
@@ -586,7 +884,7 @@ function downloadWatermarkedImage(blob, mimeType, extension) {
 }
 {% endif %}
 
-{% if simulation_slug or is_morse_translator or is_space_invaders or is_watermark_app %}
+{% if simulation_slug or is_morse_translator or is_space_invaders or is_watermark_app or is_typing_test %}
 const projectExperience = document.getElementById('project-experience');
 
 function closeProjectExperience() {
