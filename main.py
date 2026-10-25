@@ -130,10 +130,10 @@ INITIAL_PROJECTS = [
     },
     {
         "title": "Breakout Game",
-        "description": "Classic Breakout arcade game with paddle and ball physics.",
-        "full_description": "A classic Breakout arcade game built with Pygame — bounce a ball off a paddle to break bricks, with realistic angle reflection, score tracking, and start/play/game-over/win screens.",
+        "description": "A Turtle-based Breakout arcade game with a moving paddle, bouncing ball, and 57 colored bricks.",
+        "full_description": "A desktop Breakout-style game built with Python Turtle. Move the blue paddle left and right with the arrow keys to bounce the red ball into 57 colored blocks. The source checks wall, paddle, and block collisions and ends when the ball falls below the playfield.",
         "category": "game",
-        "technologies": "Python, Pygame",
+        "technologies": "Python, turtle (standard library)",
         "github_link": "https://github.com/magd00/p5_Breakout_game",
         "image": "p5_breakout.svg",
         "code_snippet": '# Breakout Game - core ball/paddle/brick collision logic\n# The real game uses Pygame for real-time graphics and needs a display, so\n# it can\'t run headlessly on a web server. This demo reproduces the same\n# collision rules (ball bounces off paddle at an angle based on where it\n# lands, bricks break on contact) using simple coordinates.\n\nclass Ball:\n    def __init__(self, x, y, dx, dy):\n        self.x, self.y, self.dx, self.dy = x, y, dx, dy\n\ndef bounce_off_paddle(ball, paddle_x, paddle_width):\n    hit_pos = (ball.x - paddle_x) / paddle_width  # 0 = left edge, 1 = right edge\n    angle_factor = (hit_pos - 0.5) * 2            # -1 (left) .. 1 (right)\n    ball.dx = angle_factor * 5\n    ball.dy = -abs(ball.dy)\n    return ball\n\nbricks = [{"x": col * 40, "y": 20, "alive": True} for col in range(10)]\n\nball = Ball(x=200, y=280, dx=2, dy=3)\npaddle_x, paddle_width = 170, 80\n\nscore = 0\nbricks_hit = 0\n\n# simulate the ball hitting the paddle, then a few bricks\nball = bounce_off_paddle(ball, paddle_x, paddle_width)\n\nfor brick in bricks:\n    if abs(brick["x"] - 120) < 20:  # simulate the ball\'s path clipping a few bricks\n        brick["alive"] = False\n        score += 10\n        bricks_hit += 1\n\nbricks_left = sum(1 for b in bricks if b["alive"])\n\nprint("Breakout Game - simulated rally")\nprint("-" * 40)\nprint(f"Paddle hit -> new ball direction: dx={ball.dx:.2f}, dy={ball.dy:.2f}")\nprint(f"Bricks broken: {bricks_hit}   Score: {score}")\nprint(f"Bricks remaining: {bricks_left}/{len(bricks)}")\nprint("YOU WIN!" if bricks_left == 0 else "Game in progress...")\n',
@@ -151,6 +151,18 @@ INITIAL_PROJECTS = [
         "code_snippet": '# Cafe Management System - stats dashboard calculation\n# The real app is Flask + SQLAlchemy with full CRUD and a JSON API; this\n# demo runs the same stats-dashboard math (total cafes, unique areas,\n# average coffee price) against a small in-memory sample of cafe records.\n\ncafes = [\n    {"name": "Peak Dive Coffee", "area": "Peckham", "coffee_price": 2.80, "has_wifi": True},\n    {"name": "The Espresso Room", "area": "Bermondsey", "coffee_price": 3.20, "has_wifi": True},\n    {"name": "Grind House", "area": "Peckham", "coffee_price": 2.50, "has_wifi": False},\n    {"name": "Bean There", "area": "Shoreditch", "coffee_price": 3.50, "has_wifi": True},\n    {"name": "Corner Cafe", "area": "Bermondsey", "coffee_price": 2.90, "has_wifi": True},\n]\n\ndef build_stats(cafes):\n    total = len(cafes)\n    areas = {c["area"] for c in cafes}\n    avg_price = round(sum(c["coffee_price"] for c in cafes) / total, 2)\n    wifi_count = sum(1 for c in cafes if c["has_wifi"])\n    return {\n        "total_cafes": total,\n        "unique_areas": len(areas),\n        "average_coffee_price": avg_price,\n        "cafes_with_wifi": wifi_count,\n    }\n\nstats = build_stats(cafes)\n\nprint("Cafe Management System - stats dashboard")\nprint("-" * 40)\nfor key, value in stats.items():\n    label = key.replace("_", " ").title()\n    print(f"{label:<22}: {value}")\n\nprint()\nprint("Cafes:")\nfor c in cafes:\n    wifi = "✓" if c["has_wifi"] else "✗"\n    print(f"  {c[\'name\']:<20} {c[\'area\']:<12} £{c[\'coffee_price\']:.2f}  WiFi:{wifi}")\n',
         "code_output": 'Cafe Management System - stats dashboard\n----------------------------------------\nTotal Cafes           : 5\nUnique Areas          : 3\nAverage Coffee Price  : 2.98\nCafes With Wifi       : 4\n\nCafes:\n  Peak Dive Coffee     Peckham      £2.80  WiFi:✓\n  The Espresso Room    Bermondsey   £3.20  WiFi:✓\n  Grind House          Peckham      £2.50  WiFi:✗\n  Bean There           Shoreditch   £3.50  WiFi:✓\n  Corner Cafe          Bermondsey   £2.90  WiFi:✓\n',
         "demo_note": 'The full app is a Flask website with a database, forms, and a JSON API. This demo runs the exact same stats-dashboard calculation (total cafes, unique areas, average coffee price) against a small sample of cafe records.',
+    },
+    {
+        "title": "Todo List Website",
+        "description": "Flask task manager with user accounts, todo lists, task labels, due dates, and completion tracking.",
+        "full_description": "A Flask and SQLite task manager. Users can register and log in, organize tasks into lists, add descriptions, due dates, labels, and daily/weekly/yearly recurrence, then mark tasks complete or delete them. The dashboard summarizes lists and task status.",
+        "category": "web",
+        "technologies": "Python, Flask, SQLAlchemy, SQLite",
+        "github_link": "https://github.com/magd00/p7_todo_list_website",
+        "image": "p7_todo.svg",
+        "code_snippet": "# Todo List Website\n# The original app uses Flask, SQLAlchemy, and SQLite for accounts,\n# lists, and task cards. Its browser Simulation demonstrates the same\n# list/task workflow with temporary in-page data only.\n",
+        "code_output": "Open the Todo List Website experience to explore a sample dashboard and manage temporary todo lists and task cards.",
+        "demo_note": "This interactive browser Simulation mirrors the original list/task workflow. Demo changes stay in the browser and are not saved to the original database.",
     },
     {
         "title": 'Space Invaders',
@@ -228,12 +240,20 @@ INITIAL_PROJECTS = [
 
 
 def seed_initial_projects():
-    """Populate the Project table on first run only (won't duplicate on restart)."""
-    if Project.query.count() == 0:
-        for p in INITIAL_PROJECTS:
+    """Seed missing portfolio entries without replacing existing project data."""
+    existing_links = {
+        project.github_link
+        for project in Project.query.with_entities(Project.github_link).all()
+    }
+    added_count = 0
+    for p in INITIAL_PROJECTS:
+        if p["github_link"] not in existing_links:
             db.session.add(Project(**p))
+            existing_links.add(p["github_link"])
+            added_count += 1
+    if added_count:
         db.session.commit()
-        print(f"✅ Seeded {len(INITIAL_PROJECTS)} projects.")
+        print(f"✅ Seeded {added_count} missing projects.")
 
 
 # Create database tables
@@ -282,19 +302,32 @@ def services():
 @app.route('/portfolio')
 def portfolio():
     """Portfolio page - shows all projects"""
-    projects = Project.query.all()
+    projects = [normalize_project_display(project) for project in Project.query.all()]
     return render_template('portfolio.html', projects=projects)
+
+
+def normalize_project_display(project):
+    """Keep portfolio text aligned with the actual Breakout source files."""
+    if (project.github_link or '').rstrip('/').endswith('/p5_Breakout_game'):
+        project.description = "A Turtle-based Breakout arcade game with a moving paddle, bouncing ball, and 57 colored bricks."
+        project.full_description = "A desktop Breakout-style game built with Python Turtle. Move the blue paddle left and right with the arrow keys to bounce the red ball into 57 colored blocks. The source checks wall, paddle, and block collisions and ends when the ball falls below the playfield."
+        project.technologies = "Python, turtle (standard library)"
+    return project
+
 
 @app.route('/project/<int:project_id>')
 def project_detail(project_id):
     """Show individual project details"""
-    project = Project.query.get_or_404(project_id)
+    project = normalize_project_display(Project.query.get_or_404(project_id))
     simulation_slug = None
     is_morse_translator = (project.github_link or '').rstrip('/').endswith('/p1_Morce_Code_translator')
     project_repo = (project.github_link or '').rstrip('/').rstrip('.')
     is_space_invaders = project_repo.endswith('/p13_arcade_game_space_invaders')
     is_watermark_app = project_repo.endswith('/p3_image_watermarking_app')
     is_typing_test = project_repo.endswith('/p4_typing_speed_Test_app')
+    is_breakout_game = project_repo.endswith('/p5_Breakout_game')
+    is_cafe_manager = project_repo.endswith('/p6_cafe_website')
+    is_todo_manager = project_repo.endswith('/p7_todo_list_website')
     if (project.github_link or '').rstrip('/').endswith('/p12_automation_for_dinosaur_game'):
         simulation_slug = 'p12_automation_for_dinosaur_game'
     return render_template(
@@ -305,6 +338,9 @@ def project_detail(project_id):
         is_space_invaders=is_space_invaders,
         is_watermark_app=is_watermark_app,
         is_typing_test=is_typing_test,
+        is_breakout_game=is_breakout_game,
+        is_cafe_manager=is_cafe_manager,
+        is_todo_manager=is_todo_manager,
     )
 
 

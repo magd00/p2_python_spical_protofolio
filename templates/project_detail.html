@@ -314,6 +314,231 @@
     box-shadow: 0 0 18px rgba(255, 68, 0, .3);
   }
   .typing-demo__start:hover { color: #17100a; filter: brightness(1.08); }
+  .breakout-simulation {
+    overflow: hidden;
+    padding: 16px;
+    color: #10202a;
+    background: #e8f4f8;
+    border: 1px solid #9dc9d8;
+    border-radius: 12px;
+  }
+  .breakout-simulation__canvas {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin: 0 auto;
+    background: #add8e6;
+    border: 1px solid #7899a5;
+    border-radius: 6px;
+    touch-action: none;
+  }
+  .breakout-simulation__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    max-width: 800px;
+    margin: 14px auto 0;
+  }
+  .breakout-simulation__status { margin: 0; font-weight: 600; }
+  .breakout-simulation__controls { display: flex; flex-wrap: wrap; gap: 8px; }
+  .breakout-simulation__hint {
+    max-width: 800px;
+    margin: 10px auto 0;
+    color: #334b55;
+    font-size: .9rem;
+  }
+  .cafe-simulation {
+    --cafe-ink: #2c3e50;
+    --cafe-orange: #e67e22;
+    color: #273746;
+    background: #f0f2f5;
+    border: 1px solid #d9dee5;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .cafe-simulation__header {
+    padding: 20px;
+    color: #fff;
+    background: linear-gradient(135deg, #2c3e50, #1a252f);
+    border-bottom: 4px solid var(--cafe-orange);
+  }
+  .cafe-simulation__header h3 { margin: 0 0 6px; color: #fff; }
+  .cafe-simulation__header p { margin: 0; opacity: .85; }
+  .cafe-simulation__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .cafe-simulation__stat {
+    padding: 7px 14px;
+    color: #fff;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 30px;
+    font-size: .9rem;
+  }
+  .cafe-simulation__body { padding: 16px; }
+  .cafe-simulation__table-wrap {
+    overflow-x: auto;
+    background: #fff;
+    border: 1px solid #e1e5e9;
+    border-radius: 10px;
+  }
+  .cafe-simulation__table { min-width: 680px; margin: 0; }
+  .cafe-simulation__table th {
+    color: var(--cafe-ink);
+    background: #f8f9fa;
+    font-size: .75rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .cafe-simulation__table td, .cafe-simulation__table th { vertical-align: middle; }
+  .cafe-simulation__name { color: var(--cafe-ink); font-weight: 700; }
+  .cafe-simulation__amenities { display: flex; flex-wrap: wrap; gap: 4px; }
+  .cafe-simulation__amenity {
+    padding: 2px 7px;
+    color: #20533b;
+    background: #e5f5ec;
+    border-radius: 20px;
+    font-size: .72rem;
+    white-space: nowrap;
+  }
+  .cafe-simulation__image {
+    width: 56px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  .cafe-simulation__image-placeholder { color: #7b8790; font-size: .8rem; }
+  .cafe-simulation__notice { min-height: 24px; margin: 10px 0 0; }
+  .cafe-simulation__notice:empty { display: none; }
+  .cafe-simulation__form {
+    margin-top: 16px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #e1e5e9;
+    border-radius: 10px;
+  }
+  .cafe-simulation__form[hidden], .cafe-simulation__api[hidden] { display: none; }
+  .cafe-simulation__api {
+    max-height: 260px;
+    margin-top: 14px;
+    overflow: auto;
+    color: #e6edf3;
+    background: #161b22;
+    border-radius: 8px;
+  }
+  .cafe-simulation__footer { color: #52616b; font-size: .85rem; }
+  @media (max-width: 575px) {
+    .cafe-simulation__body { padding: 10px; }
+    .cafe-simulation__header { padding: 16px; }
+  }
+  .todo-simulation {
+    --todo-purple: #6c63ff;
+    --todo-pink: #ff6584;
+    color: #2d3436;
+    background: #f0f2f5;
+    border: 1px solid #dfe3eb;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .todo-simulation__navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: #fff;
+    box-shadow: 0 2px 14px rgba(0,0,0,.06);
+  }
+  .todo-simulation__brand { color: var(--todo-purple); font-size: 1.1rem; font-weight: 800; }
+  .todo-simulation__brand span { color: var(--todo-pink); }
+  .todo-simulation__user {
+    padding: 6px 14px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--todo-purple), #5a52d5);
+    border-radius: 30px;
+    font-size: .85rem;
+  }
+  .todo-simulation__content { padding: 18px; }
+  .todo-simulation__stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .todo-simulation__stat {
+    padding: 12px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.04);
+  }
+  .todo-simulation__stat strong { display: block; color: var(--todo-purple); font-size: 1.45rem; }
+  .todo-simulation__stat:nth-child(2) strong { color: #00a381; }
+  .todo-simulation__stat:nth-child(3) strong { color: #d39a25; }
+  .todo-simulation__stat:nth-child(4) strong { color: var(--todo-pink); }
+  .todo-simulation__section-title { font-weight: 800; }
+  .todo-simulation__list {
+    margin-bottom: 12px;
+    padding: 15px;
+    background: #fff;
+    border-left: 4px solid var(--todo-purple);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.04);
+  }
+  .todo-simulation__list-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .todo-simulation__list-title { margin: 0; font-size: 1rem; font-weight: 750; }
+  .todo-simulation__list-description { margin: 4px 0 0; color: #667085; font-size: .88rem; }
+  .todo-simulation__meta { margin-top: 8px; color: #667085; font-size: .78rem; }
+  .todo-simulation__task {
+    margin-top: 10px;
+    padding: 11px;
+    border-left: 3px solid var(--todo-purple);
+    background: #f8f8fc;
+    border-radius: 8px;
+  }
+  .todo-simulation__task--completed { border-left-color: #00b894; opacity: .7; }
+  .todo-simulation__task--completed .todo-simulation__task-title { color: #667085; text-decoration: line-through; }
+  .todo-simulation__task-title { font-weight: 650; }
+  .todo-simulation__task-description { margin-top: 3px; color: #667085; font-size: .84rem; }
+  .todo-simulation__task-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
+  .todo-simulation__badge {
+    padding: 2px 8px;
+    background: #ecebff;
+    color: #534acb;
+    border-radius: 20px;
+    font-size: .7rem;
+  }
+  .todo-simulation__badge--urgent { background: #ff6584; color: #fff; }
+  .todo-simulation__badge--important { background: #ffe6a6; color: #503c00; }
+  .todo-simulation__badge--work { background: #d9edff; color: #07568a; }
+  .todo-simulation__badge--personal { background: #d9f7ed; color: #086346; }
+  .todo-simulation__empty { padding: 22px; text-align: center; color: #667085; }
+  .todo-simulation__form {
+    margin-top: 14px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #e1e5ee;
+    border-radius: 12px;
+  }
+  .todo-simulation__form[hidden] { display: none; }
+  .todo-simulation__notice { min-height: 22px; margin: 10px 0 0; }
+  .todo-simulation__footer { color: #667085; font-size: .82rem; }
+  @media (max-width: 575px) {
+    .todo-simulation__content { padding: 12px; }
+    .todo-simulation__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
   .watermark-preview-empty { color: var(--default-color); text-align: center; }
   @media (max-width: 575px) {
     .watermark-controls { grid-template-columns: 1fr; }
@@ -347,7 +572,7 @@
           <p class="mb-0">{{ project.full_description or project.description }}</p>
         </div>
 
-        {% if simulation_slug or is_morse_translator or is_space_invaders or is_watermark_app or is_typing_test %}
+        {% if simulation_slug or is_morse_translator or is_space_invaders or is_watermark_app or is_typing_test or is_breakout_game or is_cafe_manager or is_todo_manager %}
         <section class="info-card experience-launcher" aria-labelledby="experience-title">
           <div>
             <h3 id="experience-title"><i class="bi bi-play-circle"></i> Try this project</h3>
@@ -359,6 +584,12 @@
             <p>Apply and preview a custom text watermark on an image in your browser.</p>
             {% elif is_typing_test %}
             <p>Type the displayed passage and follow your speed, accuracy, and progress in real time.</p>
+            {% elif is_breakout_game %}
+            <p>Play a browser Simulation based on the original Turtle ball, paddle, and brick-collision rules.</p>
+            {% elif is_cafe_manager %}
+            <p>Browse the cafe directory, view live statistics, and try adding, editing, or deleting entries.</p>
+            {% elif is_todo_manager %}
+            <p>Explore a Todo dashboard, create lists and tasks, set labels and due dates, and track completion.</p>
             {% else %}
             <p>Preview the original game's artwork and see how to run the Python game locally.</p>
             {% endif %}
@@ -377,6 +608,9 @@
               {% elif simulation_slug %}Dinosaur Automation Simulation
               {% elif is_watermark_app %}Image Watermarking App
               {% elif is_typing_test %}Typing Speed Test
+              {% elif is_breakout_game %}Breakout Simulation
+              {% elif is_cafe_manager %}Cafe Management System
+              {% elif is_todo_manager %}Todo List Website
               {% else %}Space Invaders{% endif %}
             </h2>
             <button type="button" class="btn btn-outline-secondary btn-sm" onclick="closeProjectExperience()"
@@ -481,6 +715,186 @@
               </div>
             </section>
             <p class="mt-3 mb-0">The typing experience runs locally in your browser. Your input is not sent to the server.</p>
+            {% elif is_breakout_game %}
+            <section class="breakout-simulation" id="breakout-simulation" aria-label="Breakout Simulation">
+              <canvas class="breakout-simulation__canvas" id="breakout-canvas" width="800" height="600"
+                      tabindex="0" role="img" aria-label="Breakout Simulation. Use left and right arrow keys to move the paddle."></canvas>
+              <div class="breakout-simulation__toolbar">
+                <p class="breakout-simulation__status" id="breakout-status" role="status" aria-live="polite">Ready. Start the Simulation, then use the arrow keys.</p>
+                <div class="breakout-simulation__controls">
+                  <button class="btn btn-primary" id="breakout-start" type="button">Start Simulation</button>
+                  <button class="btn btn-outline-secondary" id="breakout-reset" type="button">Reset</button>
+                </div>
+              </div>
+              <p class="breakout-simulation__hint">
+                Bricks remaining: <strong id="breakout-bricks-remaining">57</strong>
+                · Use ← / → or these controls; pointer/touch movement also works.
+              </p>
+              <div class="breakout-simulation__controls mt-2 justify-content-center">
+                <button class="btn btn-outline-primary" type="button" data-paddle-direction="-1" aria-label="Move paddle left">←</button>
+                <button class="btn btn-outline-primary" type="button" data-paddle-direction="1" aria-label="Move paddle right">→</button>
+              </div>
+            </section>
+            <p class="mt-3 mb-2">This browser Simulation follows the source code's 800×600 playfield, 57-brick layout, 20-unit paddle movement, 10-unit ball steps, center-distance brick checks, and ball-loss boundary. It does not add a score or win condition, since the original loop has neither.</p>
+            <a class="btn btn-outline-primary" href="{{ project.github_link.rstrip('/') }}/blob/main/main.py" target="_blank" rel="noopener noreferrer">
+              <i class="bi bi-filetype-py"></i> View original game script
+            </a>
+            {% elif is_todo_manager %}
+            <section class="todo-simulation" id="todo-simulation" aria-label="Todo List Website experience">
+              <div class="todo-simulation__navbar">
+                <div class="todo-simulation__brand"><i class="bi bi-check-circle-fill me-1"></i>Todo<span>TheDodo</span></div>
+                <span class="todo-simulation__user"><i class="bi bi-person-circle me-1"></i>Demo User</span>
+              </div>
+              <div class="todo-simulation__content">
+                <div class="todo-simulation__stats" aria-live="polite">
+                  <div class="todo-simulation__stat"><strong id="todo-stat-lists">0</strong> Total Lists</div>
+                  <div class="todo-simulation__stat"><strong id="todo-stat-tasks">0</strong> Total Tasks</div>
+                  <div class="todo-simulation__stat"><strong id="todo-stat-completed">0</strong> Completed</div>
+                  <div class="todo-simulation__stat"><strong id="todo-stat-pending">0</strong> Pending</div>
+                </div>
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                  <h3 class="todo-simulation__section-title h5 mb-0"><i class="bi bi-list-task me-2"></i>My Todo Lists</h3>
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-primary btn-sm" id="todo-add-list" type="button"><i class="bi bi-plus-lg"></i> New List</button>
+                    <button class="btn btn-outline-secondary btn-sm" id="todo-reset" type="button">Reset Demo</button>
+                  </div>
+                </div>
+                <div id="todo-list-container"></div>
+                <p class="todo-simulation__notice" id="todo-notice" role="status" aria-live="polite"></p>
+                <form class="todo-simulation__form" id="todo-list-form" hidden>
+                  <h4 class="h6" id="todo-list-form-title">Create New List</h4>
+                  <label class="form-label" for="todo-list-title">List Title *</label>
+                  <input class="form-control mb-2" id="todo-list-title" maxlength="200" required>
+                  <label class="form-label" for="todo-list-description">Description</label>
+                  <textarea class="form-control" id="todo-list-description" maxlength="500" rows="2"></textarea>
+                  <div class="d-flex gap-2 mt-3">
+                    <button class="btn btn-primary btn-sm" type="submit">Save List</button>
+                    <button class="btn btn-outline-secondary btn-sm" id="todo-list-cancel" type="button">Cancel</button>
+                  </div>
+                </form>
+                <form class="todo-simulation__form" id="todo-task-form" hidden>
+                  <h4 class="h6" id="todo-task-form-title">Add Task</h4>
+                  <input id="todo-task-list-id" type="hidden">
+                  <label class="form-label" for="todo-task-title">Task Title *</label>
+                  <input class="form-control mb-2" id="todo-task-title" maxlength="200" required>
+                  <label class="form-label" for="todo-task-description">Description</label>
+                  <textarea class="form-control mb-2" id="todo-task-description" maxlength="500" rows="2"></textarea>
+                  <div class="row g-2">
+                    <div class="col-sm-6">
+                      <label class="form-label" for="todo-task-due">Due Date</label>
+                      <input class="form-control" id="todo-task-due" type="date">
+                    </div>
+                    <div class="col-sm-6">
+                      <label class="form-label" for="todo-task-label">Label</label>
+                      <select class="form-select" id="todo-task-label">
+                        <option value="">No Label</option>
+                        <option value="urgent">Urgent</option>
+                        <option value="important">Important</option>
+                        <option value="normal">Normal</option>
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                      </select>
+                    </div>
+                  </div>
+                  <fieldset class="mt-2">
+                    <legend class="form-label fs-6">Recurring Task</legend>
+                    <div class="d-flex flex-wrap gap-3">
+                      <label><input id="todo-task-daily" type="checkbox"> Daily</label>
+                      <label><input id="todo-task-weekly" type="checkbox"> Weekly</label>
+                      <label><input id="todo-task-yearly" type="checkbox"> Yearly</label>
+                    </div>
+                  </fieldset>
+                  <div class="d-flex gap-2 mt-3">
+                    <button class="btn btn-primary btn-sm" type="submit">Save Task</button>
+                    <button class="btn btn-outline-secondary btn-sm" id="todo-task-cancel" type="button">Cancel</button>
+                  </div>
+                </form>
+                <p class="todo-simulation__footer mt-3 mb-0">This browser Simulation mirrors the original lists, tasks, labels, due dates, recurring options, and completion tracking. Changes are temporary and stay in this page; no account or data is sent to a server.</p>
+              </div>
+            </section>
+            {% elif is_cafe_manager %}
+            <section class="cafe-simulation" id="cafe-simulation" aria-label="Cafe Management System experience">
+              <header class="cafe-simulation__header">
+                <h3>Coffee Shop Directory</h3>
+                <p>Discover and manage coffee spots across London</p>
+                <div class="cafe-simulation__stats" aria-live="polite">
+                  <span class="cafe-simulation__stat"><strong id="cafe-stat-total">0</strong> Shops</span>
+                  <span class="cafe-simulation__stat"><strong id="cafe-stat-areas">0</strong> Areas</span>
+                  <span class="cafe-simulation__stat">£<strong id="cafe-stat-average">0.00</strong> Average coffee price</span>
+                </div>
+              </header>
+              <div class="cafe-simulation__body">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                  <h4 class="h5 mb-0">All Locations</h4>
+                  <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-warning btn-sm" id="cafe-add" type="button">
+                      <i class="bi bi-plus-lg"></i> Add Shop
+                    </button>
+                    <button class="btn btn-outline-secondary btn-sm" id="cafe-api-toggle" type="button" aria-expanded="false">
+                      View API data
+                    </button>
+                  </div>
+                </div>
+                <div class="cafe-simulation__table-wrap">
+                  <table class="table table-hover cafe-simulation__table">
+                    <thead>
+                      <tr>
+                        <th>#</th><th>Cafe Name</th><th>Location</th><th>Seats</th>
+                        <th>Features</th><th>Price</th><th>Image</th><th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="cafe-table-body"></tbody>
+                  </table>
+                  <p class="p-3 mb-0" id="cafe-empty-state" hidden>No cafes found. Add your first cafe!</p>
+                </div>
+                <p class="cafe-simulation__notice" id="cafe-notice" role="status" aria-live="polite"></p>
+                <form class="cafe-simulation__form" id="cafe-form" hidden>
+                  <h4 class="h5" id="cafe-form-title">Add New Cafe</h4>
+                  <input id="cafe-form-id" type="hidden">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="cafe-name">Cafe Name *</label>
+                      <input class="form-control" id="cafe-name" name="name" maxlength="250" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="cafe-location">Location *</label>
+                      <input class="form-control" id="cafe-location" name="location" maxlength="250" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="cafe-seats">Seats</label>
+                      <input class="form-control" id="cafe-seats" name="seats" placeholder="e.g., 20-30">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="cafe-price">Coffee Price</label>
+                      <input class="form-control" id="cafe-price" name="coffee_price" placeholder="e.g., £3.00">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="cafe-map-url">Google Maps URL</label>
+                      <input class="form-control" id="cafe-map-url" name="map_url" type="url" placeholder="https://maps.google.com/...">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="cafe-image-url">Image URL</label>
+                      <input class="form-control" id="cafe-image-url" name="img_url" type="url" placeholder="https://example.com/image.jpg">
+                    </div>
+                    <fieldset class="col-12">
+                      <legend class="form-label fs-6">Amenities</legend>
+                      <div class="d-flex flex-wrap gap-3">
+                        <label><input type="checkbox" name="has_toilet"> Toilet</label>
+                        <label><input type="checkbox" name="has_wifi"> WiFi</label>
+                        <label><input type="checkbox" name="has_sockets"> Sockets</label>
+                        <label><input type="checkbox" name="can_take_calls"> Calls</label>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div class="d-flex gap-2 mt-3">
+                    <button class="btn btn-primary" type="submit" id="cafe-save">Save Cafe</button>
+                    <button class="btn btn-outline-secondary" type="button" id="cafe-cancel">Cancel</button>
+                  </div>
+                </form>
+                <pre class="cafe-simulation__api" id="cafe-api-output" hidden><code></code></pre>
+                <p class="cafe-simulation__footer mt-3 mb-0">Interactive browser Simulation: changes are temporary, saved only in this page, and never sent to a server.</p>
+              </div>
+            </section>
             {% elif simulation_slug %}
             <p>This Simulation describes the real desktop automation. It does not use the external game's built-in bot and cannot control another browser tab from inside this page.</p>
             <iframe class="experience-frame"
@@ -512,7 +926,7 @@ py main.py</pre>
         </dialog>
         {% endif %}
 
-                {% if project.github_link and not simulation_slug and not is_morse_translator and not is_space_invaders and not is_watermark_app and not is_typing_test %}
+                {% if project.github_link and not simulation_slug and not is_morse_translator and not is_space_invaders and not is_watermark_app and not is_typing_test and not is_breakout_game and not is_cafe_manager and not is_todo_manager %}
         <div class="info-card">
           <h3><i class="bi bi-github"></i> Run the full project yourself</h3>
           <p>This page runs a simplified, self-contained demo of the core logic. To run the real, complete project — including any UI, file access, or packages that can't run in a browser demo — grab it from GitHub:</p>
@@ -730,6 +1144,658 @@ document.getElementById('typing-start').addEventListener('click', () => {
 renderTypingPassage();
 {% endif %}
 
+{% if is_breakout_game %}
+const breakoutCanvas = document.getElementById('breakout-canvas');
+const breakoutContext = breakoutCanvas.getContext('2d');
+const breakoutStatus = document.getElementById('breakout-status');
+const breakoutColors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+const breakoutPaddle = { x: 0, y: -270, width: 100, height: 20 };
+const breakoutInitialBricks = [];
+let breakoutBricks = [];
+let breakoutBall = { x: 0, y: -200, dx: 10, dy: 10 };
+let breakoutRunning = false;
+let breakoutFrameId = null;
+let breakoutLastFrame = 0;
+let breakoutAccumulator = 0;
+const breakoutStepMs = 50;
+
+for (const y of [250, 200, 150]) {
+  for (let x = -350; x <= 350; x += 50) {
+    breakoutInitialBricks.push({ x, y });
+  }
+}
+for (let x = -350; x <= 200; x += 50) {
+  breakoutInitialBricks.push({ x, y: 100 });
+}
+
+function resetBreakoutSimulation() {
+  if (breakoutFrameId !== null) {
+    window.cancelAnimationFrame(breakoutFrameId);
+    breakoutFrameId = null;
+  }
+  breakoutRunning = false;
+  breakoutBall = { x: 0, y: -200, dx: 10, dy: 10 };
+  breakoutPaddle.x = 0;
+  breakoutBricks = breakoutInitialBricks.map(brick => ({
+    ...brick,
+    color: breakoutColors[Math.floor(Math.random() * breakoutColors.length)]
+  }));
+  document.getElementById('breakout-bricks-remaining').textContent = breakoutBricks.length;
+  document.getElementById('breakout-start').textContent = 'Start Simulation';
+  breakoutStatus.textContent = 'Ready. Start the Simulation, then use the arrow keys.';
+  drawBreakoutSimulation();
+}
+
+function drawBreakoutSimulation() {
+  const context = breakoutContext;
+  context.clearRect(0, 0, breakoutCanvas.width, breakoutCanvas.height);
+  context.fillStyle = '#add8e6';
+  context.fillRect(0, 0, breakoutCanvas.width, breakoutCanvas.height);
+
+  breakoutBricks.forEach(brick => {
+    context.fillStyle = brick.color;
+    context.fillRect(400 + brick.x - 15, 300 - brick.y - 15, 30, 30);
+  });
+
+  context.fillStyle = '#191970';
+  context.fillRect(
+    400 + breakoutPaddle.x - breakoutPaddle.width / 2,
+    300 - breakoutPaddle.y - breakoutPaddle.height / 2,
+    breakoutPaddle.width,
+    breakoutPaddle.height
+  );
+
+  context.fillStyle = 'red';
+  context.beginPath();
+  context.arc(400 + breakoutBall.x, 300 - breakoutBall.y, 10, 0, Math.PI * 2);
+  context.fill();
+}
+
+function moveBreakoutPaddle(direction) {
+  if (!breakoutRunning) return;
+  breakoutPaddle.x += direction * 20;
+  drawBreakoutSimulation();
+}
+
+function stepBreakoutSimulation() {
+  breakoutBall.x += breakoutBall.dx;
+  breakoutBall.y += breakoutBall.dy;
+
+  if (breakoutBall.y > 280) {
+    breakoutBall.dy *= -1;
+  }
+  if (breakoutBall.x > 380 || breakoutBall.x < -380) {
+    breakoutBall.dx *= -1;
+  }
+  const paddleDistance = Math.hypot(
+    breakoutBall.x - breakoutPaddle.x,
+    breakoutBall.y - breakoutPaddle.y
+  );
+  if (paddleDistance < 50 && breakoutBall.y < -240) {
+    breakoutBall.dy *= -1;
+  }
+  if (breakoutBall.y < -280) {
+    breakoutRunning = false;
+    breakoutFrameId = null;
+    document.getElementById('breakout-start').textContent = 'Start Simulation';
+    breakoutStatus.textContent = 'Ball fell below the playfield. Reset to play again.';
+  }
+
+  const hitIndex = breakoutBricks.findIndex(brick => (
+    Math.hypot(breakoutBall.x - brick.x, breakoutBall.y - brick.y) < 15
+  ));
+  if (hitIndex !== -1) {
+    breakoutBall.dy *= -1;
+    breakoutBricks.splice(hitIndex, 1);
+    document.getElementById('breakout-bricks-remaining').textContent = breakoutBricks.length;
+  }
+  drawBreakoutSimulation();
+}
+
+function animateBreakoutSimulation(timestamp) {
+  if (!breakoutRunning) return;
+  if (!breakoutLastFrame) breakoutLastFrame = timestamp;
+  breakoutAccumulator += Math.min(timestamp - breakoutLastFrame, 100);
+  breakoutLastFrame = timestamp;
+  while (breakoutAccumulator >= breakoutStepMs && breakoutRunning) {
+    stepBreakoutSimulation();
+    breakoutAccumulator -= breakoutStepMs;
+  }
+  if (breakoutRunning) {
+    breakoutFrameId = window.requestAnimationFrame(animateBreakoutSimulation);
+  }
+}
+
+document.getElementById('breakout-start').addEventListener('click', () => {
+  if (breakoutRunning) return;
+  if (breakoutBall.y < -280) resetBreakoutSimulation();
+  breakoutRunning = true;
+  breakoutLastFrame = 0;
+  breakoutAccumulator = 0;
+  document.getElementById('breakout-start').textContent = 'Simulation Running';
+  breakoutStatus.textContent = 'In progress. Move the paddle with ← / →.';
+  breakoutCanvas.focus();
+  breakoutFrameId = window.requestAnimationFrame(animateBreakoutSimulation);
+});
+
+document.getElementById('breakout-reset').addEventListener('click', resetBreakoutSimulation);
+document.getElementById('breakout-simulation').addEventListener('click', event => {
+  const directionButton = event.target.closest('[data-paddle-direction]');
+  if (directionButton) {
+    moveBreakoutPaddle(Number(directionButton.dataset.paddleDirection));
+  }
+});
+document.addEventListener('keydown', event => {
+  if (!document.getElementById('project-experience').open) return;
+  if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+  if (event.target.matches('input, textarea, select')) return;
+  event.preventDefault();
+  moveBreakoutPaddle(event.key === 'ArrowLeft' ? -1 : 1);
+});
+breakoutCanvas.addEventListener('pointermove', event => {
+  if (!breakoutRunning) return;
+  const bounds = breakoutCanvas.getBoundingClientRect();
+  breakoutPaddle.x = ((event.clientX - bounds.left) / bounds.width) * 800 - 400;
+  drawBreakoutSimulation();
+});
+
+resetBreakoutSimulation();
+{% endif %}
+
+{% if is_cafe_manager %}
+const cafeRows = [
+  {id: 7, name: 'Ace Hotel Shoreditch', location: 'Shoreditch', seats: '50+', coffee_price: '£3.00', has_toilet: true, has_wifi: true, has_sockets: true, can_take_calls: false, map_url: '', img_url: ''},
+  {id: 14, name: 'Barbican Centre', location: 'Barbican', seats: '50+', coffee_price: '£3.00', has_toilet: true, has_wifi: true, has_sockets: false, can_take_calls: true, map_url: '', img_url: ''},
+  {id: 13, name: 'Citizen M Hotel Shoreditch', location: 'Shoreditch', seats: '30-40', coffee_price: '£2.80', has_toilet: true, has_wifi: true, has_sockets: true, can_take_calls: false, map_url: '', img_url: ''},
+  {id: 21, name: 'FORA Borough', location: 'Borough', seats: '20-30', coffee_price: '£2.40', has_toilet: true, has_wifi: false, has_sockets: true, can_take_calls: true, map_url: '', img_url: ''}
+];
+const cafeTableBody = document.getElementById('cafe-table-body');
+const cafeForm = document.getElementById('cafe-form');
+const cafeNotice = document.getElementById('cafe-notice');
+const cafeApiOutput = document.getElementById('cafe-api-output');
+const cafeApiToggle = document.getElementById('cafe-api-toggle');
+
+function updateCafeStats() {
+  const locations = new Set(cafeRows.map(cafe => cafe.location).filter(Boolean));
+  const prices = cafeRows.map(cafe => {
+    if (!cafe.coffee_price) return null;
+    const parsed = Number(cafe.coffee_price.replace(/[^\d.]/g, ''));
+    return Number.isFinite(parsed) ? parsed : null;
+  }).filter(price => price !== null);
+  const average = prices.length
+    ? prices.reduce((total, price) => total + price, 0) / prices.length
+    : 0;
+  document.getElementById('cafe-stat-total').textContent = cafeRows.length;
+  document.getElementById('cafe-stat-areas').textContent = locations.size;
+  document.getElementById('cafe-stat-average').textContent = average.toFixed(2);
+}
+
+function cafeAmenities(cafe) {
+  return [
+    ['has_wifi', 'WiFi'],
+    ['has_sockets', 'Power'],
+    ['has_toilet', 'Toilet'],
+    ['can_take_calls', 'Calls']
+  ].filter(([key]) => cafe[key]).map(([, label]) => label);
+}
+
+function createCafeCell(text, className = '') {
+  const cell = document.createElement('td');
+  cell.textContent = text;
+  if (className) cell.className = className;
+  return cell;
+}
+
+function safeCafeWebUrl(value) {
+  if (!value) return null;
+  try {
+    const url = new URL(value);
+    return url.protocol === 'http:' || url.protocol === 'https:' ? url.href : null;
+  } catch {
+    return null;
+  }
+}
+
+function renderCafeDirectory() {
+  cafeTableBody.replaceChildren();
+  const sortedCafes = [...cafeRows].sort((first, second) => first.name.localeCompare(second.name));
+  document.getElementById('cafe-empty-state').hidden = sortedCafes.length !== 0;
+  sortedCafes.forEach((cafe, index) => {
+    const row = document.createElement('tr');
+    row.appendChild(createCafeCell(String(index + 1)));
+    const nameCell = document.createElement('td');
+    nameCell.className = 'cafe-simulation__name';
+    const mapUrl = safeCafeWebUrl(cafe.map_url);
+    if (mapUrl) {
+      const mapLink = document.createElement('a');
+      mapLink.href = mapUrl;
+      mapLink.target = '_blank';
+      mapLink.rel = 'noopener noreferrer';
+      mapLink.textContent = cafe.name;
+      nameCell.appendChild(mapLink);
+    } else {
+      nameCell.textContent = cafe.name;
+    }
+    row.appendChild(nameCell);
+    row.appendChild(createCafeCell(cafe.location));
+    row.appendChild(createCafeCell(cafe.seats));
+
+    const featureCell = document.createElement('td');
+    const featureList = document.createElement('div');
+    featureList.className = 'cafe-simulation__amenities';
+    const features = cafeAmenities(cafe);
+    if (features.length) {
+      features.forEach(feature => {
+        const badge = document.createElement('span');
+        badge.className = 'cafe-simulation__amenity';
+        badge.textContent = feature;
+        featureList.appendChild(badge);
+      });
+    } else {
+      featureList.textContent = 'No features';
+    }
+    featureCell.appendChild(featureList);
+    row.appendChild(featureCell);
+    row.appendChild(createCafeCell(cafe.coffee_price));
+    const imageCell = document.createElement('td');
+    const imageUrl = safeCafeWebUrl(cafe.img_url);
+    if (imageUrl) {
+      const image = document.createElement('img');
+      image.className = 'cafe-simulation__image';
+      image.src = imageUrl;
+      image.alt = `${cafe.name} cafe`;
+      image.loading = 'lazy';
+      image.addEventListener('error', () => {
+        image.replaceWith(document.createTextNode('Image unavailable'));
+      }, { once: true });
+      imageCell.appendChild(image);
+    } else {
+      const placeholder = document.createElement('span');
+      placeholder.className = 'cafe-simulation__image-placeholder';
+      placeholder.textContent = 'No image';
+      imageCell.appendChild(placeholder);
+    }
+    row.appendChild(imageCell);
+
+    const actionCell = document.createElement('td');
+    const actions = document.createElement('div');
+    actions.className = 'd-flex gap-1';
+    [['edit', 'Edit'], ['delete', 'Delete']].forEach(([action, label]) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = action === 'delete' ? 'btn btn-danger btn-sm' : 'btn btn-primary btn-sm';
+      button.dataset.cafeAction = action;
+      button.dataset.cafeId = cafe.id;
+      button.textContent = label;
+      actions.appendChild(button);
+    });
+    actionCell.appendChild(actions);
+    row.appendChild(actionCell);
+    cafeTableBody.appendChild(row);
+  });
+  updateCafeStats();
+  cafeApiOutput.querySelector('code').textContent = JSON.stringify(sortedCafes, null, 2);
+}
+
+function resetCafeForm() {
+  cafeForm.reset();
+  document.getElementById('cafe-form-id').value = '';
+  document.getElementById('cafe-form-title').textContent = 'Add New Cafe';
+  document.getElementById('cafe-save').textContent = 'Save Cafe';
+}
+
+function beginCafeEdit(cafe) {
+  document.getElementById('cafe-form-id').value = cafe.id;
+  document.getElementById('cafe-name').value = cafe.name;
+  document.getElementById('cafe-location').value = cafe.location;
+  document.getElementById('cafe-seats').value = cafe.seats;
+  document.getElementById('cafe-price').value = cafe.coffee_price;
+  document.getElementById('cafe-map-url').value = cafe.map_url;
+  document.getElementById('cafe-image-url').value = cafe.img_url;
+  ['has_toilet', 'has_wifi', 'has_sockets', 'can_take_calls'].forEach(key => {
+    cafeForm.elements.namedItem(key).checked = cafe[key];
+  });
+  document.getElementById('cafe-form-title').textContent = 'Edit Cafe';
+  document.getElementById('cafe-save').textContent = 'Update Cafe';
+  cafeForm.hidden = false;
+  document.getElementById('cafe-name').focus();
+}
+
+document.getElementById('cafe-add').addEventListener('click', () => {
+  resetCafeForm();
+  cafeForm.hidden = false;
+  document.getElementById('cafe-name').focus();
+});
+
+document.getElementById('cafe-cancel').addEventListener('click', () => {
+  cafeForm.hidden = true;
+  resetCafeForm();
+});
+
+cafeForm.addEventListener('submit', event => {
+  event.preventDefault();
+  const formData = new FormData(cafeForm);
+  const editingId = Number(document.getElementById('cafe-form-id').value);
+  const name = String(formData.get('name') || '').trim();
+  const location = String(formData.get('location') || '').trim();
+  if (!name || !location) {
+    cafeNotice.textContent = 'Cafe name and location are required.';
+    cafeNotice.className = 'cafe-simulation__notice text-danger';
+    return;
+  }
+  const duplicate = cafeRows.some(cafe => cafe.name.toLocaleLowerCase() === name.toLocaleLowerCase()
+    && cafe.id !== editingId);
+  if (duplicate) {
+    cafeNotice.textContent = 'A cafe with this name already exists.';
+    cafeNotice.className = 'cafe-simulation__notice text-danger';
+    return;
+  }
+
+  const updatedCafe = {
+    id: editingId || Math.max(0, ...cafeRows.map(cafe => cafe.id)) + 1,
+    name,
+    location,
+    seats: String(formData.get('seats') || '').trim(),
+    coffee_price: String(formData.get('coffee_price') || '').trim(),
+    map_url: String(formData.get('map_url') || '').trim(),
+    img_url: String(formData.get('img_url') || '').trim(),
+    has_toilet: formData.has('has_toilet'),
+    has_wifi: formData.has('has_wifi'),
+    has_sockets: formData.has('has_sockets'),
+    can_take_calls: formData.has('can_take_calls')
+  };
+  const existingIndex = cafeRows.findIndex(cafe => cafe.id === editingId);
+  if (existingIndex === -1) {
+    cafeRows.push(updatedCafe);
+    cafeNotice.textContent = `Successfully added ${name} to the directory.`;
+  } else {
+    cafeRows[existingIndex] = updatedCafe;
+    cafeNotice.textContent = 'Cafe updated successfully.';
+  }
+  cafeNotice.className = 'cafe-simulation__notice text-success';
+  cafeForm.hidden = true;
+  resetCafeForm();
+  renderCafeDirectory();
+});
+
+cafeTableBody.addEventListener('click', event => {
+  const button = event.target.closest('[data-cafe-action]');
+  if (!button) return;
+  const cafe = cafeRows.find(item => item.id === Number(button.dataset.cafeId));
+  if (!cafe) return;
+  if (button.dataset.cafeAction === 'edit') {
+    beginCafeEdit(cafe);
+    return;
+  }
+  if (window.confirm(`Are you sure you want to delete ${cafe.name}?`)) {
+    cafeRows.splice(cafeRows.indexOf(cafe), 1);
+    cafeNotice.textContent = 'Cafe deleted successfully.';
+    cafeNotice.className = 'cafe-simulation__notice text-success';
+    renderCafeDirectory();
+  }
+});
+
+cafeApiToggle.addEventListener('click', () => {
+  cafeApiOutput.hidden = !cafeApiOutput.hidden;
+  cafeApiToggle.setAttribute('aria-expanded', String(!cafeApiOutput.hidden));
+  cafeApiToggle.textContent = cafeApiOutput.hidden ? 'View API data' : 'Hide API data';
+});
+
+renderCafeDirectory();
+{% endif %}
+
+{% if is_todo_manager %}
+const todoInitialData = [
+  {
+    id: 1,
+    title: 'Work Tasks',
+    description: 'Projects and weekly priorities',
+    cards: [
+      {id: 1, title: 'Review project brief', description: 'Collect the main requirements', due_date: '2026-10-28', label: 'work', completed: false, is_daily: false, is_weekly: false, is_yearly: false},
+      {id: 2, title: 'Send status update', description: '', due_date: '', label: 'normal', completed: true, is_daily: false, is_weekly: true, is_yearly: false}
+    ]
+  },
+  {
+    id: 2,
+    title: 'Personal',
+    description: 'Small things to take care of',
+    cards: [
+      {id: 3, title: 'Plan the weekend', description: 'Choose an activity', due_date: '', label: 'personal', completed: false, is_daily: false, is_weekly: false, is_yearly: false}
+    ]
+  }
+];
+let todoLists = [];
+let nextTodoListId = 1;
+let nextTodoCardId = 1;
+const todoListContainer = document.getElementById('todo-list-container');
+const todoListForm = document.getElementById('todo-list-form');
+const todoTaskForm = document.getElementById('todo-task-form');
+const todoNotice = document.getElementById('todo-notice');
+
+function cloneTodoInitialData() {
+  return todoInitialData.map(list => ({
+    ...list,
+    cards: list.cards.map(card => ({ ...card }))
+  }));
+}
+
+function createTodoElement(tag, className, text) {
+  const element = document.createElement(tag);
+  if (className) element.className = className;
+  if (text !== undefined) element.textContent = text;
+  return element;
+}
+
+function updateTodoStats() {
+  const cards = todoLists.flatMap(list => list.cards);
+  const completed = cards.filter(card => card.completed).length;
+  document.getElementById('todo-stat-lists').textContent = todoLists.length;
+  document.getElementById('todo-stat-tasks').textContent = cards.length;
+  document.getElementById('todo-stat-completed').textContent = completed;
+  document.getElementById('todo-stat-pending').textContent = cards.length - completed;
+}
+
+function todoLabelClass(label) {
+  return ['urgent', 'important', 'work', 'personal'].includes(label)
+    ? `todo-simulation__badge todo-simulation__badge--${label}`
+    : 'todo-simulation__badge';
+}
+
+function renderTodoLists() {
+  todoListContainer.replaceChildren();
+  if (!todoLists.length) {
+    todoListContainer.appendChild(createTodoElement('div', 'todo-simulation__empty', 'No Todo Lists Yet. Create your first list to get started.'));
+  }
+
+  todoLists.forEach(list => {
+    const card = createTodoElement('section', 'todo-simulation__list');
+    const header = createTodoElement('div', 'todo-simulation__list-header');
+    const titleGroup = document.createElement('div');
+    titleGroup.appendChild(createTodoElement('h4', 'todo-simulation__list-title', list.title));
+    if (list.description) {
+      titleGroup.appendChild(createTodoElement('p', 'todo-simulation__list-description', list.description));
+    }
+    const completedCount = list.cards.filter(task => task.completed).length;
+    titleGroup.appendChild(createTodoElement(
+      'div',
+      'todo-simulation__meta',
+      `${list.cards.length} tasks · ${completedCount} done · ${list.cards.length - completedCount} pending`
+    ));
+    header.appendChild(titleGroup);
+
+    const listActions = createTodoElement('div', 'd-flex gap-2');
+    const addTaskButton = createTodoElement('button', 'btn btn-success btn-sm', '+ Add Task');
+    addTaskButton.type = 'button';
+    addTaskButton.dataset.todoAction = 'add-task';
+    addTaskButton.dataset.listId = list.id;
+    listActions.appendChild(addTaskButton);
+    const deleteListButton = createTodoElement('button', 'btn btn-outline-danger btn-sm', 'Delete List');
+    deleteListButton.type = 'button';
+    deleteListButton.dataset.todoAction = 'delete-list';
+    deleteListButton.dataset.listId = list.id;
+    listActions.appendChild(deleteListButton);
+    header.appendChild(listActions);
+    card.appendChild(header);
+
+    list.cards.forEach(task => {
+      const taskCard = createTodoElement(
+        'article',
+        `todo-simulation__task${task.completed ? ' todo-simulation__task--completed' : ''}`
+      );
+      const taskHeader = createTodoElement('div', 'd-flex flex-wrap justify-content-between gap-2');
+      taskHeader.appendChild(createTodoElement('div', 'todo-simulation__task-title', task.title));
+      const taskActions = createTodoElement('div', 'd-flex gap-2');
+      const toggleButton = createTodoElement('button', 'btn btn-outline-success btn-sm', task.completed ? 'Undo' : 'Complete');
+      toggleButton.type = 'button';
+      toggleButton.dataset.todoAction = 'toggle-task';
+      toggleButton.dataset.listId = list.id;
+      toggleButton.dataset.taskId = task.id;
+      taskActions.appendChild(toggleButton);
+      const deleteTaskButton = createTodoElement('button', 'btn btn-outline-danger btn-sm', 'Delete');
+      deleteTaskButton.type = 'button';
+      deleteTaskButton.dataset.todoAction = 'delete-task';
+      deleteTaskButton.dataset.listId = list.id;
+      deleteTaskButton.dataset.taskId = task.id;
+      taskActions.appendChild(deleteTaskButton);
+      taskHeader.appendChild(taskActions);
+      taskCard.appendChild(taskHeader);
+
+      if (task.description) {
+        taskCard.appendChild(createTodoElement('p', 'todo-simulation__task-description', task.description));
+      }
+      const metadata = createTodoElement('div', 'todo-simulation__task-meta');
+      if (task.due_date) metadata.appendChild(createTodoElement('span', 'todo-simulation__badge', `Due ${task.due_date}`));
+      if (task.label) metadata.appendChild(createTodoElement('span', todoLabelClass(task.label), task.label));
+      if (task.is_daily) metadata.appendChild(createTodoElement('span', 'todo-simulation__badge', 'Daily'));
+      if (task.is_weekly) metadata.appendChild(createTodoElement('span', 'todo-simulation__badge', 'Weekly'));
+      if (task.is_yearly) metadata.appendChild(createTodoElement('span', 'todo-simulation__badge', 'Yearly'));
+      metadata.appendChild(createTodoElement('span', 'todo-simulation__badge', task.completed ? 'Completed' : 'Pending'));
+      taskCard.appendChild(metadata);
+      card.appendChild(taskCard);
+    });
+    todoListContainer.appendChild(card);
+  });
+  updateTodoStats();
+}
+
+function resetTodoDemo() {
+  todoLists = cloneTodoInitialData();
+  nextTodoListId = Math.max(0, ...todoLists.map(list => list.id)) + 1;
+  nextTodoCardId = Math.max(0, ...todoLists.flatMap(list => list.cards.map(card => card.id))) + 1;
+  todoListForm.hidden = true;
+  todoTaskForm.hidden = true;
+  todoNotice.textContent = 'Demo reset to its sample lists and tasks.';
+  renderTodoLists();
+}
+
+document.getElementById('todo-add-list').addEventListener('click', () => {
+  todoTaskForm.hidden = true;
+  todoListForm.reset();
+  todoListForm.hidden = false;
+  document.getElementById('todo-list-title').focus();
+});
+
+document.getElementById('todo-list-cancel').addEventListener('click', () => {
+  todoListForm.hidden = true;
+  todoListForm.reset();
+});
+
+todoListForm.addEventListener('submit', event => {
+  event.preventDefault();
+  const title = document.getElementById('todo-list-title').value.trim();
+  if (!title) {
+    todoNotice.textContent = 'List title is required.';
+    return;
+  }
+  todoLists.push({
+    id: nextTodoListId++,
+    title,
+    description: document.getElementById('todo-list-description').value.trim(),
+    cards: []
+  });
+  todoNotice.textContent = `List "${title}" created successfully.`;
+  todoListForm.hidden = true;
+  todoListForm.reset();
+  renderTodoLists();
+});
+
+document.getElementById('todo-task-cancel').addEventListener('click', () => {
+  todoTaskForm.hidden = true;
+  todoTaskForm.reset();
+});
+
+todoTaskForm.addEventListener('submit', event => {
+  event.preventDefault();
+  const title = document.getElementById('todo-task-title').value.trim();
+  if (!title) {
+    todoNotice.textContent = 'Task title is required.';
+    return;
+  }
+  const listId = Number(document.getElementById('todo-task-list-id').value);
+  const list = todoLists.find(item => item.id === listId);
+  if (!list) {
+    todoNotice.textContent = 'The selected list could not be found.';
+    return;
+  }
+  list.cards.push({
+    id: nextTodoCardId++,
+    title,
+    description: document.getElementById('todo-task-description').value.trim(),
+    due_date: document.getElementById('todo-task-due').value,
+    label: document.getElementById('todo-task-label').value,
+    completed: false,
+    is_daily: document.getElementById('todo-task-daily').checked,
+    is_weekly: document.getElementById('todo-task-weekly').checked,
+    is_yearly: document.getElementById('todo-task-yearly').checked
+  });
+  todoNotice.textContent = `Task "${title}" added successfully.`;
+  todoTaskForm.hidden = true;
+  todoTaskForm.reset();
+  renderTodoLists();
+});
+
+todoListContainer.addEventListener('click', event => {
+  const button = event.target.closest('[data-todo-action]');
+  if (!button) return;
+  const listId = Number(button.dataset.listId);
+  const list = todoLists.find(item => item.id === listId);
+  if (!list) return;
+
+  if (button.dataset.todoAction === 'add-task') {
+    todoListForm.hidden = true;
+    todoTaskForm.reset();
+    document.getElementById('todo-task-list-id').value = list.id;
+    document.getElementById('todo-task-form-title').textContent = `Add Task to ${list.title}`;
+    todoTaskForm.hidden = false;
+    document.getElementById('todo-task-title').focus();
+  } else if (button.dataset.todoAction === 'delete-list') {
+    if (!window.confirm(`Delete the "${list.title}" list and all its tasks?`)) return;
+    todoLists = todoLists.filter(item => item.id !== listId);
+    todoNotice.textContent = `List "${list.title}" deleted.`;
+    renderTodoLists();
+  } else {
+    const taskId = Number(button.dataset.taskId);
+    const task = list.cards.find(item => item.id === taskId);
+    if (!task) return;
+    if (button.dataset.todoAction === 'toggle-task') {
+      task.completed = !task.completed;
+      todoNotice.textContent = task.completed ? 'Task marked complete.' : 'Task marked pending.';
+    } else if (button.dataset.todoAction === 'delete-task') {
+      if (!window.confirm(`Delete the "${task.title}" task?`)) return;
+      list.cards = list.cards.filter(item => item.id !== taskId);
+      todoNotice.textContent = `Task "${task.title}" deleted.`;
+    }
+    renderTodoLists();
+  }
+});
+
+document.getElementById('todo-reset').addEventListener('click', () => {
+  if (window.confirm('Reset the demo and discard your temporary changes?')) resetTodoDemo();
+});
+
+resetTodoDemo();
+{% endif %}
+
 {% if is_watermark_app %}
 const watermarkFileInput = document.getElementById('watermark-file');
 const watermarkTextInput = document.getElementById('watermark-text');
@@ -884,7 +1950,7 @@ function downloadWatermarkedImage(blob, mimeType, extension) {
 }
 {% endif %}
 
-{% if simulation_slug or is_morse_translator or is_space_invaders or is_watermark_app or is_typing_test %}
+{% if simulation_slug or is_morse_translator or is_space_invaders or is_watermark_app or is_typing_test or is_breakout_game or is_cafe_manager or is_todo_manager %}
 const projectExperience = document.getElementById('project-experience');
 
 function closeProjectExperience() {
@@ -898,6 +1964,17 @@ if (new URLSearchParams(window.location.search).get('experience') === '1') {
   }
   projectExperience.showModal();
 }
+
+{% if is_breakout_game %}
+projectExperience.addEventListener('close', () => {
+  if (!breakoutRunning) return;
+  window.cancelAnimationFrame(breakoutFrameId);
+  breakoutFrameId = null;
+  breakoutRunning = false;
+  document.getElementById('breakout-start').textContent = 'Start Simulation';
+  breakoutStatus.textContent = 'Simulation paused. Start to continue or reset to begin again.';
+});
+{% endif %}
 
 projectExperience.addEventListener('click', event => {
   if (event.target === projectExperience) {
